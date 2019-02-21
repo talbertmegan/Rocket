@@ -5,7 +5,7 @@ function a = acceleration(thrust, position)
     GRAVITY = 6.671E-11;
     Re = 6.371E6;
     Me = 5.972E24;
-    a = thrust + findGravitationalAcceleration(position, mass)
+    a = thrust + findGravitationalAcceleration(position)
 end
 
 
