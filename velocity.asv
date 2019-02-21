@@ -1,0 +1,4 @@
+
+function a = findTotalAcceleration(thrust, position, mass)
+    a = thrust + findGravitationalAcceleration(position, mass)
+end
