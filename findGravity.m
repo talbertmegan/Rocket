@@ -1,9 +1,6 @@
-%test stuff
+%%this file will find the gravity vector acting on an object at position
 
-findGravityTest([0,0,0])
-
-
-function g = findGravityTest(position)
+function g = findGravity(position)
     
     %find center of mass for a given system
     % TODO make a dynamic n-body sytem
@@ -18,15 +15,18 @@ function g = findGravityTest(position)
     
     %gravity is sum of directional forces of gravity
     %where direction accelerations are GM/|r|^2 * rhat
-    r(:,[1:3]) = bodies(:,[1:3]) - position([1:3]);
+    r(:,1:3) = bodies(:,1:3) - position(1:3);
     
-    unitVector(r(1,[1:3]));
+    unitVector(r(1,1:3));
     
+    %Pre-alloc space bc matlab constantly complains if you dont :(
+    acceleration = zeros(length(bodies(:,1)),1);
+    g = zeros(1, 3);
     
     for ii = 1:length(bodies(:,1))
         
-        acceleration(ii,1) =(6.671e-11 * bodies(ii,4)) / vectorLength(r(ii,[1:3]))^2;
-        g(ii, [1:3]) = acceleration(ii)* unitVector(r(ii,[1:3]));
+        acceleration(ii,1) =(6.671e-11 * bodies(ii,4)) / vectorLength(r(ii,1:3))^2;
+        g(1, 1:3) = g(1,1:3) + (acceleration(ii)* unitVector(r(ii,1:3)));
         
     end
     

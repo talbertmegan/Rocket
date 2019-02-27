@@ -1,7 +1,4 @@
-%% The beginning of the project
-
-import findAcceleration
-import findVelocity
+% The beginning of the project
 
 global GRAVITY
     GRAVITY = 6.671E-11;
@@ -9,13 +6,9 @@ global GRAVITY
 %rocket properties
 velocity = [0, 0, 0];
 position = [0, 0, 0];
-accelerationVector = [0, 0, 0]; %pre-init to reduce chance of errors
+acceleration = [0, 0, 0]; %pre-init to reduce chance of errors
 thrust = [0,0,0] %rocket thrust
 
-%system properties
-EarthPosition = [0,-6.371e6,0]
-EartVelocity = [0,0,0]
-MoonPo
 
 %possible future additions (if someone else gets this project next year)
 %airResistanceFactor = k
@@ -33,24 +26,23 @@ MoonPo
 
 
 while(true)
-    
+    % TODO this can be optimized by combining linear approximations later
     %loop start time
     t1 = clock;
     
     %hefty calculations
-    accelerationVector = findAcceleration(position,thrust);
-    velocityVector = findVelocity(acceleration, velocity);
-    
-    t2 = clock;
-    %used in linear approximation
-    dt = etime(t2,t1); %finds the change in time since the loop start
-    
+    acceleration = findAcceleration(position,thrust);
+    velocity = findVelocity(acceleration, velocity, finddt(t1));
+
     
     % p(t) = p(t-dt) + dt*p'(t-dt) is linear approximation, valid for
     % sufficiently small dt. p'(t-dt) = velocityVector
-    position = position + dt*velocityVector;
-    
+    position = findPosition(velocity, position, finddt(t1));
     %assume time between t2 assignment and t1 assignment is negligble
 
+end
+
+function dt = finddt(t1)
+    dt = etime(clock,t1);
 end
 
