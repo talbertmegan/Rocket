@@ -1,4 +1,5 @@
 % The beginning of the project
+close all
 
 global GRAVITY
     GRAVITY = 6.671E-11;
@@ -7,7 +8,7 @@ global GRAVITY
 velocity = [0, 0, 0];
 position = [0, 0, 0];
 acceleration = [0, 0, 0]; %pre-init to reduce chance of errors
-thrust = [0,1,0]; %rocket thrust
+thrust = [0,100,0]; %rocket thrust
 
 
 %possible future additions (if someone else gets this project next year)
@@ -24,27 +25,41 @@ thrust = [0,1,0]; %rocket thrust
 %all other calculations are based off this assumption
 %so earth's starting position is [0,-6.371e6,0] (easier for n-body systems)
 figure
-hold on;
+startTime = clock;
+subplot(2,2,1)
+title('Time v Position');
 while(true)
     % TODO this can be optimized by combining linear approximations later
     %loop start time
     t1 = clock;
-    
+    time = etime(t1,startTime);
     %hefty calculations
     acceleration = findAcceleration(position,thrust);
     velocity = findVelocity(acceleration, velocity, finddt(t1));
 
-    
+    %WE ARE NOT SURE HOW 
     % p(t) = p(t-dt) + dt*p'(t-dt) is linear approximation, valid for
     % sufficiently small dt. p'(t-dt) = velocityVector
     position = findPosition(velocity, position, finddt(t1));
-    pause(1);
-    plot(position, velocity, 'o');
+    subplot(2,2,1)
+    plot(time, position,'.');
+%     xlim([0 10]);
+%     ylim([0 0.1]);
+    hold on
+    subplot(2,2,2);
+    plot(time, velocity,'.');
+%     xlim([0 10]);
+%     ylim([0 3]);
+    hold on
+    subplot(2,2,3);
+    plot(time, acceleration, '.');
 %     fprintf('%d is acceleration \n',acceleration);
 %     fprintf('%d is velocity \n',velocity);
 %     fprintf('%d is position \n', position);
     %assume time between t2 assignment and t1 assignment is negligble
     %break;
+    drawnow;
+    hold on
 end
 
 function dt = finddt(t1)

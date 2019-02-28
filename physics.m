@@ -37,7 +37,7 @@ while(true)
     acceleration = findAcceleration(position,thrust);
     velocity = findVelocity(acceleration, velocity, finddt(t1));
 
-    
+    %WE ARE NOT SURE HOW GRAPHING VECTORS WORKS
     % p(t) = p(t-dt) + dt*p'(t-dt) is linear approximation, valid for
     % sufficiently small dt. p'(t-dt) = velocityVector
     position = findPosition(velocity, position, finddt(t1));
