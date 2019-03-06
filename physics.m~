@@ -40,50 +40,47 @@ system = [...
 %startin position is set to be [0,0]
 %all other calculations are based off this assumption
 %so earth's starting position is [0,-6.371e6,0] (easier for n-body systems)
-
-
-%%Pre-loop init
-figure 
-set(gcf, 'WindowState', 'fullscreen') %open a graph to fill whole screen
-startTime = clock; %used in x-axis calculation for graphing
-timeFromStart = 0; %pre-declare so while-loop doesn't mess up (do while)
-t1=clock;%pre-declare for timeFromStart declaration below
+figure
+set(gcf, 'WindowState', 'fullscreen')
+startTime = clock;
+c = 0;
+timeFromStart = 0;
+t1=clock;
 
  
 
 while(timeFromStart<=100)
     % TODO this can be optimized by combining linear approximations later
     %also, graphing can be optimized
-
-    %%Loop counter variable
+    
+    %loop start time
+   
     timeFromStart = etime(t1, startTime);
     
     %%GRAPHING
     
-    %add graph titles
     subplot(3,6,1)
-    title('P X');
-    subplot(3,6,2)
-        title('V X');
-    subplot(3,6,3)
-        title('A X');
+title('P X');
+subplot(3,6,2)
+title('V X');
+subplot(3,6,3)
+title('A X');
 
-    subplot(3,6,7)
-        title('P Y');
-    subplot(3,6,8)
-        title('V Y');
-    subplot(3,6,9)
-        title('A Y');
+subplot(3,6,7)
+title('P Y');
+subplot(3,6,8)
+title('V Y');
+subplot(3,6,9)
+title('A Y');
 
-    subplot(3,6,13)
-        title('P Z');
-    subplot(3,6,14)
-        title('V Z');
-    subplot(3,6,15)
-        title('A Z');
+subplot(3,6,13)
+title('P Z');
+subplot(3,6,14)
+title('V Z');
+subplot(3,6,15)
+title('A Z');
     
-        %if I remove any "hold on" the plots stop working!! I don't know
-        %why
+        %if I remove any "hold on" the plots stop working!!
     subplot(3,6,1) %position x
     plot(timeFromStart, position(1), '.')
         xlim([0,100]);

@@ -2,9 +2,6 @@
 
 function g = findGravity(position, system)
     
-    %find center of mass for a given system
-    % TODO make a dynamic n-body sytem
-    %for now, moon and earth are stationary and absolute
     
     %let bodies be a nx4 matrix containing the position and mass of each
     %body
@@ -30,7 +27,7 @@ function g = findGravity(position, system)
     
     %g(1,1:3) = acceleration(:)*unitVector(r(:,1:3))
     %{
-    the old method, but matlab sucks at loops so we switched to matrix
+    the old method, but matlab slows at loops so we switched to matrix
     for ii = 1:length(bodies(:,1))
         
         acceleration(ii,1) =(6.671e-11 * bodies(ii,4)) / vectorLength(r(ii,1:3))^2;
@@ -43,7 +40,7 @@ end
 
 function length = vectorLength(r)
     %there should be an easier way to do this with "sum(vector(:))" but it
-    %wasnt working and frankly f- that
+    %wasnt working and frankly this works
     length(:) = sqrt( r(:,1).^2 + r(:,2).^2 + r(:,3).^2);
     length = length';
 
