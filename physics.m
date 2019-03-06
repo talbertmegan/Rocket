@@ -39,15 +39,75 @@ startTime = clock;
 c = 0;
 hold on
 timeFromStart = 0;
-t1=clock
+t1=clock;
 
+    subplot(3,6,1)
+title('Position X');
+subplot(3,6,2)
+title('Velocity X');
+subplot(3,6,3)
+title('Acceleration X');
+
+subplot(3,6,7)
+title('Position Y');
+subplot(3,6,8)
+title('Velocity Y');
+subplot(3,6,9)
+title('Acceleration Y');
+
+subplot(3,6,13)
+title('Position Z');
+subplot(3,6,14)
+title('Velocity Z');
+subplot(3,6,15)
+title('Acceleration Z');
+    
+        %if I remove any "hold on" the plots stop working!!
+    subplot(3,6,1) %position x
+    plot(timeFromStart, position(1), '.')
+        xlim([0,100]);
+    hold on
+    subplot(3,6,7) %position y
+    plot(timeFromStart, position(2), '.')
+        xlim([0,100]);
+    hold on
+    subplot(3,6,13) %position z
+    plot(timeFromStart, position(3), '.')
+        xlim([0,100]);
+        
+    hold on
+    subplot(3,6,2) %velocity x
+    plot(timeFromStart, velocity(1), '.')
+        xlim([0,10]);
+    hold on
+    subplot(3,6,8) %velocity y
+    plot(timeFromStart, velocity(2), '.')
+        xlim([0,100]);
+    hold on
+    subplot(3,6,14) %velocity z
+    plot(timeFromStart, velocity(3), '.')
+        xlim([0,10]);
+    hold on
+    
+    hold on
+    subplot(3,6,3) %acceleration x
+    plot(timeFromStart, acceleration(1), '.')
+        xlim([0,10]);
+    hold on
+    subplot(3,6,9) %acceleration y
+    plot(timeFromStart, acceleration(2), '.')
+        xlim([0,100]);
+    hold on
+    subplot(3,6,15) %acceleration z
+    plot(timeFromStart, acceleration(3), '.')
+        xlim([0,10]);
 
 
 while(timeFromStart<=100)
     % TODO this can be optimized by combining linear approximations later
     
     %loop start time
-    
+   
     timeFromStart = etime(t1, startTime);
     
     
@@ -119,7 +179,7 @@ title('Acceleration Z');
     acceleration = findAcceleration(position,thrust,system);
     velocity = findVelocity(acceleration, velocity, finddt(t1));
     %system = updateSystem(system, finddt(t1)); 
-    position = findPosition([0,100,0], position, finddt(t1));
+    position = findPosition(velocity, position, finddt(t1));
     % p(t) = p(t-dt) + dt*p'(t-dt) is linear approximation, valid for
     % sufficiently small dt. p'(t-dt) = velocityVector
     
