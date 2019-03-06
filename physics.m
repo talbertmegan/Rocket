@@ -11,6 +11,14 @@ acceleration = [0, 0, 0]; %pre-init to reduce chance of errors
 thrust = [0,100,0]; %rocket thrust
 
 
+%n-body system properties, initial
+% xposition, yposition, zposition, mass, xvelocity, yvelocity, zvelocity
+system = [...
+        [0,-6.371e6,0],5.972e24, [0,0,0];... %earth
+        [0,383.4e6,0],7.3276e22, [-100,0,0]... %moo
+    ];
+
+
 %possible future additions (if someone else gets this project next year)
 %airResistanceFactor = k
 %angleOfAttack = theta
@@ -34,7 +42,7 @@ while(true)
     t1 = clock;
     time = etime(t1,startTime);
     %hefty calculations
-    acceleration = findAcceleration(position,thrust);
+    acceleration = findAcceleration(position,thrust,system);
     velocity = findVelocity(acceleration, velocity, finddt(t1));
 
     %WE ARE NOT SURE HOW GRAPHING VECTORS WORKS
