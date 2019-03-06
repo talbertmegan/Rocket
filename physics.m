@@ -1,8 +1,7 @@
 % The beginning of the project
 close all
+clear all
 
-global GRAVITY
-    GRAVITY = 6.671E-11;
     
 %rocket properties
 velocity = [0, 0, 0];
@@ -36,7 +35,8 @@ figure
 startTime = clock;
 subplot(2,2,1)
 title('Time v Position');
-while(true)
+c = 0;
+while(c<100)
     % TODO this can be optimized by combining linear approximations later
     %loop start time
     t1 = clock;
@@ -44,23 +44,24 @@ while(true)
     %hefty calculations
     acceleration = findAcceleration(position,thrust,system);
     velocity = findVelocity(acceleration, velocity, finddt(t1));
+    system = updateSystem(system, finddt(t1));
 
     %WE ARE NOT SURE HOW GRAPHING VECTORS WORKS
     % p(t) = p(t-dt) + dt*p'(t-dt) is linear approximation, valid for
     % sufficiently small dt. p'(t-dt) = velocityVector
     position = findPosition(velocity, position, finddt(t1));
     subplot(2,2,1)
-    plot(time, position,'.');
+    plot(c, position,'.');
 %     xlim([0 10]);
 %     ylim([0 0.1]);
     hold on
     subplot(2,2,2);
-    plot(time, velocity,'.');
+    plot(c, velocity,'.');
 %     xlim([0 10]);
 %     ylim([0 3]);
     hold on
     subplot(2,2,3);
-    plot(time, acceleration, '.');
+    plot(c, acceleration, '.');
 %     fprintf('%d is acceleration \n',acceleration);
 %     fprintf('%d is velocity \n',velocity);
 %     fprintf('%d is position \n', position);
@@ -68,6 +69,7 @@ while(true)
     %break;
     drawnow;
     hold on
+    c = c + 1;
 end
 
 function dt = finddt(t1)

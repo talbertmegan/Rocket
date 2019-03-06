@@ -1,51 +1,7 @@
 %%Updates the position and velocities of the bodies
-clear all
-system = [...
-        [0,-6.371e6,0],5.972e24, [-100,0,0];... %earth
-        [0,383.4e6,0],7.3276e22, [0,0,0];... %moo
-        [0,-383.4e6,0],7.3276e22, [0,0,0];... %moo
-        
-    ];
-clear all
-system = [...
-        [0,0,0], 100, [0,0,0];...
-        [0,10,0], 100, [10,0,0];...
-        [0,-10,0], 100, [-10,0,0]...
-        ];
 
-for ii = 1:100
-    recordPos1(ii,[1,2]) = system(1,[1,2]);
-    recordVel1(ii, [1,2]) = system(1, 5:6);
-    recordPos2(ii,1:2) = system(2,1:2)
-    recordPos3(ii,1:2) = system(3,1:2);
-    system = updateSystemTest(system,1);
-    tIndex(ii) = ii;
-    
-end
 
-figure
-subplot(2,3,1)
-plot( tIndex, recordPos1(:,1))
-subplot(2,3,4)
-plot( tIndex, recordPos1(:,2))
-subplot(2,3,2)
-plot( tIndex, recordPos2(:,1))
-subplot(2,3,5)
-plot( tIndex, recordPos2(:,2))
-subplot(2,3,3)
-plot( tIndex, recordPos3(:,1))
-subplot(2,3,6)
-plot( tIndex, recordPos3(:,2))
-
-figure
-subplot(1,3,1)
-plot( recordPos1(:,1), recordPos1(:,2))
-subplot(1,3,2)
-plot( recordPos2(:,1), recordPos2(:,2))
-subplot(1,3,3)
-plot( recordPos3(:,1), recordPos3(:,2))
-
-function system = updateSystemTest(systemMatrix, dt)
+function system = updateSystem(systemMatrix, dt)
     
     
     %orbit in circles about the center of gravity
