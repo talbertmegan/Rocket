@@ -33,38 +33,57 @@ system = [...
 %so earth's starting position is [0,-6.371e6,0] (easier for n-body systems)
 figure
 startTime = clock;
-subplot(3,6,1)
-title('Time v Position');
+
+
+
 c = 0;
 hold on
-while(c < 1000)
+timeFromStart = 0;
+t1=clock
+
+
+
+while(timeFromStart<=100)
     % TODO this can be optimized by combining linear approximations later
     
     %loop start time
-    t1 = clock;
-    timeFromStart = etime(t1,startTime);
+    
+    timeFromStart = etime(t1, startTime);
     
     
-    %hefty calculations
-    acceleration = findAcceleration(position,thrust,system);
-    velocity = findVelocity(acceleration, velocity, finddt(t1));
-    %system = updateSystem(system, finddt(t1)); 
-    position = findPosition([0,100,0], position, finddt(t1));
-    % p(t) = p(t-dt) + dt*p'(t-dt) is linear approximation, valid for
-    % sufficiently small dt. p'(t-dt) = velocityVector
+    subplot(3,6,1)
+title('Position X');
+subplot(3,6,2)
+title('Velocity X');
+subplot(3,6,3)
+title('Acceleration X');
+
+subplot(3,6,7)
+title('Position Y');
+subplot(3,6,8)
+title('Velocity Y');
+subplot(3,6,9)
+title('Acceleration Y');
+
+subplot(3,6,13)
+title('Position Z');
+subplot(3,6,14)
+title('Velocity Z');
+subplot(3,6,15)
+title('Acceleration Z');
     
-    %if I remove any "hold on" the plots stop working!!
+        %if I remove any "hold on" the plots stop working!!
     subplot(3,6,1) %position x
     plot(timeFromStart, position(1), '.')
-        xlim([0,10]);
+        xlim([0,100]);
     hold on
     subplot(3,6,7) %position y
     plot(timeFromStart, position(2), '.')
-        xlim([0,10]);
+        xlim([0,100]);
     hold on
     subplot(3,6,13) %position z
     plot(timeFromStart, position(3), '.')
-        xlim([0,10]);
+        xlim([0,100]);
         
     hold on
     subplot(3,6,2) %velocity x
@@ -73,7 +92,7 @@ while(c < 1000)
     hold on
     subplot(3,6,8) %velocity y
     plot(timeFromStart, velocity(2), '.')
-        xlim([0,10]);
+        xlim([0,100]);
     hold on
     subplot(3,6,14) %velocity z
     plot(timeFromStart, velocity(3), '.')
@@ -87,17 +106,26 @@ while(c < 1000)
     hold on
     subplot(3,6,9) %acceleration y
     plot(timeFromStart, acceleration(2), '.')
-        xlim([0,10]);
+        xlim([0,100]);
     hold on
     subplot(3,6,15) %acceleration z
     plot(timeFromStart, acceleration(3), '.')
         xlim([0,10]);
     hold on
     
-    
     drawnow
     
-    c = c+1;
+    %hefty calculations
+    acceleration = findAcceleration(position,thrust,system);
+    velocity = findVelocity(acceleration, velocity, finddt(t1));
+    %system = updateSystem(system, finddt(t1)); 
+    position = findPosition([0,100,0], position, finddt(t1));
+    % p(t) = p(t-dt) + dt*p'(t-dt) is linear approximation, valid for
+    % sufficiently small dt. p'(t-dt) = velocityVector
+    
+    
+    t1 = clock;
+
     
     %{
     old graphing stuff
@@ -127,6 +155,6 @@ while(c < 1000)
 end
 
 function dt = finddt(t1)
-    dt = etime(clock,t1)
+    dt = etime(clock,t1);
 end
 
