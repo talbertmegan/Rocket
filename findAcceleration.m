@@ -1,7 +1,7 @@
 
 
-function a = findAcceleration(position,thrust)
-   g = findGravity(position);
+function a = findAcceleration(position,thrust,system)
+   g = findGravity(position,system);
    
    a = thrust + g;
    
