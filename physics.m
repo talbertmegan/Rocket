@@ -7,7 +7,7 @@ clear all
 velocity = [0, 0, 0];
 position = [0, 0, 0];
 acceleration = [0, 0, 0]; %pre-init to reduce chance of errors
-thrust = [0,100,0]; %rocket thrust
+thrust = [0,1e6,0]; %rocket thrust
 
 
 %n-body system properties, initial
@@ -33,75 +33,11 @@ system = [...
 %so earth's starting position is [0,-6.371e6,0] (easier for n-body systems)
 figure
 startTime = clock;
-
-
-
 c = 0;
-hold on
 timeFromStart = 0;
 t1=clock;
 
-    subplot(3,6,1)
-title('Position X');
-subplot(3,6,2)
-title('Velocity X');
-subplot(3,6,3)
-title('Acceleration X');
-
-subplot(3,6,7)
-title('Position Y');
-subplot(3,6,8)
-title('Velocity Y');
-subplot(3,6,9)
-title('Acceleration Y');
-
-subplot(3,6,13)
-title('Position Z');
-subplot(3,6,14)
-title('Velocity Z');
-subplot(3,6,15)
-title('Acceleration Z');
-    
-        %if I remove any "hold on" the plots stop working!!
-    subplot(3,6,1) %position x
-    plot(timeFromStart, position(1), '.')
-        xlim([0,100]);
-    hold on
-    subplot(3,6,7) %position y
-    plot(timeFromStart, position(2), '.')
-        xlim([0,100]);
-    hold on
-    subplot(3,6,13) %position z
-    plot(timeFromStart, position(3), '.')
-        xlim([0,100]);
-        
-    hold on
-    subplot(3,6,2) %velocity x
-    plot(timeFromStart, velocity(1), '.')
-        xlim([0,10]);
-    hold on
-    subplot(3,6,8) %velocity y
-    plot(timeFromStart, velocity(2), '.')
-        xlim([0,100]);
-    hold on
-    subplot(3,6,14) %velocity z
-    plot(timeFromStart, velocity(3), '.')
-        xlim([0,10]);
-    hold on
-    
-    hold on
-    subplot(3,6,3) %acceleration x
-    plot(timeFromStart, acceleration(1), '.')
-        xlim([0,10]);
-    hold on
-    subplot(3,6,9) %acceleration y
-    plot(timeFromStart, acceleration(2), '.')
-        xlim([0,100]);
-    hold on
-    subplot(3,6,15) %acceleration z
-    plot(timeFromStart, acceleration(3), '.')
-        xlim([0,10]);
-
+ 
 
 while(timeFromStart<=100)
     % TODO this can be optimized by combining linear approximations later
@@ -112,25 +48,25 @@ while(timeFromStart<=100)
     
     
     subplot(3,6,1)
-title('Position X');
+title('P X');
 subplot(3,6,2)
-title('Velocity X');
+title('V X');
 subplot(3,6,3)
-title('Acceleration X');
+title('A X');
 
 subplot(3,6,7)
-title('Position Y');
+title('P Y');
 subplot(3,6,8)
-title('Velocity Y');
+title('V Y');
 subplot(3,6,9)
-title('Acceleration Y');
+title('A Y');
 
 subplot(3,6,13)
-title('Position Z');
+title('P Z');
 subplot(3,6,14)
-title('Velocity Z');
+title('V Z');
 subplot(3,6,15)
-title('Acceleration Z');
+title('A Z');
     
         %if I remove any "hold on" the plots stop working!!
     subplot(3,6,1) %position x
@@ -173,12 +109,48 @@ title('Acceleration Z');
         xlim([0,10]);
     hold on
     
+    
+    % system plotting: moon
+    subplot(3,6,4) %pos x
+        plot(timeFromStart, system(2,1), '.')
+        title("M P X")
+        xlim([0,100])
+    hold on
+    subplot(3,6,10) %pos y
+        plot(timeFromStart, system(2,2), '.')
+        title("M P Y")
+        xlim([0,100])
+        hold on
+    subplot(3,6,16) %pos z
+        plot(timeFromStart, system(2,3), '.')
+        title("M P Z")
+        xlim([0,100])
+        hold on
+    
+    % system plotting: moon
+    subplot(3,6,5) %pos x
+        plot(timeFromStart, system(2,5), '.')
+        title("M V X")
+        xlim([0,100])
+        hold on
+    subplot(3,6,11) %pos y
+        plot(timeFromStart, system(2,6), '.')
+        title("M V Y")
+        xlim([0,100])
+        hold on
+    subplot(3,6,17) %pos z
+        plot(timeFromStart, system(2,7), '.')
+        title("M V Z")
+        xlim([0,100])
+        hold on
+    
+    
     drawnow
     
     %hefty calculations
+    system = updateSystem(system, finddt(t1)); 
     acceleration = findAcceleration(position,thrust,system);
     velocity = findVelocity(acceleration, velocity, finddt(t1));
-    %system = updateSystem(system, finddt(t1)); 
     position = findPosition(velocity, position, finddt(t1));
     % p(t) = p(t-dt) + dt*p'(t-dt) is linear approximation, valid for
     % sufficiently small dt. p'(t-dt) = velocityVector
