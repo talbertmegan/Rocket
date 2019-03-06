@@ -7,7 +7,7 @@ clear all
 velocity = [0, 0, 0];
 position = [0, 0, 0];
 acceleration = [0, 0, 0]; %pre-init to reduce chance of errors
-thrust = [0,1e6,0]; %rocket thrust
+thrust = [0,1e3,0]; %rocket thrust
 
 
 %n-body system properties, initial
@@ -32,6 +32,7 @@ system = [...
 %all other calculations are based off this assumption
 %so earth's starting position is [0,-6.371e6,0] (easier for n-body systems)
 figure
+set(gcf, 'WindowState', 'fullscreen')
 startTime = clock;
 c = 0;
 timeFromStart = 0;
@@ -84,7 +85,7 @@ title('A Z');
     hold on
     subplot(3,6,2) %velocity x
     plot(timeFromStart, velocity(1), '.')
-        xlim([0,10]);
+        xlim([0,100]);
     hold on
     subplot(3,6,8) %velocity y
     plot(timeFromStart, velocity(2), '.')
@@ -92,13 +93,13 @@ title('A Z');
     hold on
     subplot(3,6,14) %velocity z
     plot(timeFromStart, velocity(3), '.')
-        xlim([0,10]);
+        xlim([0,100]);
     hold on
     
     hold on
     subplot(3,6,3) %acceleration x
     plot(timeFromStart, acceleration(1), '.')
-        xlim([0,10]);
+        xlim([0,100]);
     hold on
     subplot(3,6,9) %acceleration y
     plot(timeFromStart, acceleration(2), '.')
@@ -106,7 +107,7 @@ title('A Z');
     hold on
     subplot(3,6,15) %acceleration z
     plot(timeFromStart, acceleration(3), '.')
-        xlim([0,10]);
+        xlim([0,100]);
     hold on
     
     
