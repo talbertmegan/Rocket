@@ -5,6 +5,7 @@ function system = updateSystem(systemMatrix, dt)
     
 
 
+    
     %TODO explain why this works in documentation
     for ii = 1:length(systemMatrix(:,1))
         systemMatrix(ii,[5:7]) = findVelocity( findGravity( systemMatrix(ii,[1:3]), systemMatrix ), systemMatrix(ii,5:7), dt);

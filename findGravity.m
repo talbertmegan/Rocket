@@ -12,18 +12,24 @@ function g = findGravity(position, system)
     r(:,1:3) = system(:,1:3) - position(1:3);
       
     % a = GM/R^2
+    % g = sum(a)
     
+    %putting it all in one mega line saves .002seconds, which is
+    %significant given the importance of this function :/
     
+    g = sum( (6.671e-11 * system(:,4) ./ vectorLength(r(:,1:3)).^2) .* unitVector(r(:,1:3)), 1, 'omitnan') ;
+ 
+    %g = sum(acceleration, 1, 'omitnan')
     
-    acceleration(:) = 6.671e-11 * system(:,4) ./ vectorLength(r(:,1:3)).^2;
-    gComponents(:, 1:3) = acceleration(:) .* unitVector(r(:,1:3));
-    gComponents(find(isnan(gComponents))) = 0; %ignores objects inside the object being evaluated
+    %{
     if length(gComponents(:,1)) ==1
         g = gComponents;
         return
     else
         g = sum(gComponents);
     end
+    %}
+    
     
     %g(1,1:3) = acceleration(:)*unitVector(r(:,1:3))
     %{

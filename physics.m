@@ -43,22 +43,24 @@ system = [...
 
 
 %%Pre-loop init
-figure 
-set(gcf, 'WindowState', 'fullscreen') %open a graph to fill whole screen
+%figure 
+%set(gcf, 'WindowState', 'fullscreen') %open a graph to fill whole screen
+
 startTime = clock; %used in x-axis calculation for graphing
 timeFromStart = 0; %pre-declare so while-loop doesn't mess up (do while)
 t1=clock;%pre-declare for timeFromStart declaration below
 
  
 
-while(timeFromStart<=100)
+while(timeFromStart<=10)
     % TODO this can be optimized by combining linear approximations later
     %also, graphing can be optimized
 
     %%Loop counter variable
     timeFromStart = etime(t1, startTime);
     
-    %%GRAPHING
+    %%GRAPHING (commented out)
+    %{
     
     %add graph titles
     subplot(3,6,1)
@@ -161,6 +163,7 @@ while(timeFromStart<=100)
     
     
     drawnow
+    %}
     
     %%ACTUAL PHYSICS
     %hefty calculations
