@@ -15,19 +15,18 @@ public class test_driver
 
     public static void main(String args[])
     {
-
-        System.out.println("hello");
-
+        GraphicalUserInterface GUI = new GraphicalUserInterface();
+        JFrame frame = new JFrame("Rocket");
         javax.swing.SwingUtilities.invokeLater(new Runnable() {
             @Override
             public void run() {
                 //Create frame
-                JFrame frame = new JFrame("Rocket");
+                //JFrame frame = new JFrame("Rocket");
                 frame.setSize(init_width,init_height); // needed twice so the frame will properly center
 
 
                 //Add gui to frame
-                frame.setContentPane(new GraphicalUserInterface());
+                frame.setContentPane(GUI);
                 //frame.getContentPane().add(new JLabel("TEST"));
 
                 //some misc cleanup for the window
@@ -42,8 +41,24 @@ public class test_driver
                 frame.setVisible(true);
             }
         });
+        int counter = 0;
+        while(counter <100)
+        {
+            float [] newVel = GUI.getVelocity();
+            newVel[0] += counter;
+            newVel[1] += 20;
+            newVel[2] += 20;
 
+            GUI.setVelocity(newVel);
+            //frame.repaint();
+            GUI.update();
+            try {
+                Thread.sleep(100);
+            } catch(Exception e){
 
+            }
+            counter ++;
+        }
     }
 
 }

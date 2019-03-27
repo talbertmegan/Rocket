@@ -7,6 +7,8 @@ import java.awt.*;
 import java.awt.geom.AffineTransform;
 import java.awt.geom.Ellipse2D;
 
+import static java.lang.Float.NaN;
+
 
 public class GraphicalUserInterface extends JPanel
 {
@@ -134,6 +136,10 @@ public class GraphicalUserInterface extends JPanel
 
 		//assuming y is upwards on the screen :)
 		double thetaOfShip = Math.atan( (double) getVelocity()[0]/getVelocity()[1] );
+		if(Double.isNaN(thetaOfShip)){
+			thetaOfShip = 0;
+		}
+		System.out.println(thetaOfShip);
 
 		//rotate ship based on its angle of attack
 		g2d.rotate(thetaOfShip, panelCenter[0], panelCenter[1]);//rotate about center
@@ -144,13 +150,16 @@ public class GraphicalUserInterface extends JPanel
 
 		//reset rotation
 		g2d.setTransform(old);
-
-
 		//find coordinate bounds for the screen next
 		//used to see what needs to be rendered
 		int[] bounds = findBoundsOfScreen();
 
 
+	}
+
+	public void update()
+	{
+		this.repaint();
 	}
 
 	////////// GETTERS AND SETTERS ///////////////
