@@ -46,16 +46,26 @@ system = [...
 %figure 
 %set(gcf, 'WindowState', 'fullscreen') %open a graph to fill whole screen
 
+%%Lets get this GUI working :)
+javaaddpath(pwd) %add current working directory to java dynamic class paths
+output = gui.GraphicalUserInterface(); %create the output window
+
+%setup output
+output.setVelocity(velocity);
+output.setPosition(position);
+
+
 startTime = clock; %used in x-axis calculation for graphing
 timeFromStart = 0; %pre-declare so while-loop doesn't mess up (do while)
 t1=clock;%pre-declare for timeFromStart declaration below
 
- 
-
+%%this loop is broken on purpose for testing
 while(timeFromStart<=10)
     % TODO this can be optimized by combining linear approximations later
     %also, graphing can be optimized
-
+    break; 
+    %% IMPORTANT
+    %% ABOVE LINE BREAKS CODE
     %%Loop counter variable
     timeFromStart = etime(t1, startTime);
     

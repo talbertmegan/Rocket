@@ -1,11 +1,6 @@
 
 
-%lets get JAVA to work
-strcat(pwd, "/gui")
+%lets get JAVA to works
 javaaddpath( pwd)
 
-
-javaaddpath("gui")
-
-o = wtf.jar;
 
