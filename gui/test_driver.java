@@ -15,6 +15,12 @@ public class test_driver
 
     public static void main(String args[])
     {
+
+        Window_Container test = new Window_Container();
+
+        test.haveFun();
+
+        /*
         GraphicalUserInterface GUI = new GraphicalUserInterface();
         JFrame frame = new JFrame("Rocket");
         javax.swing.SwingUtilities.invokeLater(new Runnable() {
@@ -59,6 +65,7 @@ public class test_driver
             }
             counter ++;
         }
+        */
     }
 
 }

@@ -7,8 +7,6 @@ import java.awt.*;
 import java.awt.geom.AffineTransform;
 import java.awt.geom.Ellipse2D;
 
-import static java.lang.Float.NaN;
-
 
 public class GraphicalUserInterface extends JPanel
 {
@@ -16,8 +14,8 @@ public class GraphicalUserInterface extends JPanel
 	////////// Declare variables////////////////////
 
 
-	private float[] position = new float[3]; //current rocket position
-	private float[] velocity = new float[3]; //current velocity
+	protected float[] position = new float[3]; //current rocket position
+	protected float[] velocity = new float[3]; //current velocity
 
 
 	private int shipWidth = 20;
@@ -25,15 +23,22 @@ public class GraphicalUserInterface extends JPanel
 
 	private Color shipColor = new Color(250,0,0);
 
-	private double[][] system; //defines the variables for celestial bodies
+	protected double[][] system; //defines the variables for celestial bodies
+
 
 	////////// Constructor(s) /////////////////////
 
 	public GraphicalUserInterface()
 	{
+
+
 		//TODO add listeners here
 		//TODO allocate UI components
+
+
 	}
+
+
 
 	////////// Private methods ///////////////////
 
@@ -168,7 +173,7 @@ public class GraphicalUserInterface extends JPanel
 	 *
 	 * @param new_velocity sets the new velocity for the Rocket
 	 */
-	public void setVelocity(float new_velocity[]){
+	public void setVelocity(float[] new_velocity){
 		this.velocity = new_velocity;
 	}
 
