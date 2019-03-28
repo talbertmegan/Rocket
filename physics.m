@@ -47,8 +47,9 @@ system = [...
 %set(gcf, 'WindowState', 'fullscreen') %open a graph to fill whole screen
 
 %%Lets get this GUI working :)
-javaaddpath(pwd) %add current working directory to java dynamic class paths
-output = gui.GraphicalUserInterface(); %create the output window
+javaaddpath(pwd+"/gui") %add current working directory to java dynamic class paths
+javaaddpath(pwd)
+output = Window_Container(); %create the output window
 
 %setup output
 output.setVelocity(velocity);
