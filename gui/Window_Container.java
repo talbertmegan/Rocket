@@ -1,5 +1,6 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.WindowEvent;
 
 public class Window_Container extends JFrame {
 
@@ -35,7 +36,6 @@ public class Window_Container extends JFrame {
                 setVisible(true);
             }
         });
-
     }
 
     public void haveFun()
@@ -61,6 +61,11 @@ public class Window_Container extends JFrame {
 
         }
 
+    }
+
+    public void kill()
+    {
+        dispatchEvent(new WindowEvent(this, WindowEvent.WINDOW_CLOSING));
     }
 
     public void update()
@@ -89,5 +94,6 @@ public class Window_Container extends JFrame {
     {
         return game.getVelocity();
     }
+
 
 }

@@ -51,10 +51,12 @@ javaaddpath(pwd+"/gui") %add current working directory to java dynamic class pat
 javaaddpath(pwd)
 output = Window_Container(); %create the output window
 
+
 %setup output
 output.setVelocity(velocity);
 output.setPosition(position);
 
+output.kill();
 
 startTime = clock; %used in x-axis calculation for graphing
 timeFromStart = 0; %pre-declare so while-loop doesn't mess up (do while)
