@@ -219,7 +219,7 @@ while(timeFromStart<=5)
     acceleration = findAcceleration(position,thrust,system);
     
     %% LOOK AT THIS HARDCODING FOR TESTING IT WILL 100% CAUSE PROBLEMS
-    acceleration = [1*timeFromStart + 25, exp(timeFromStart), 0];
+    acceleration = [1*timeFromStart,
     
     %update velocity of rocket
     velocity = findVelocity(acceleration, velocity, finddt(t1));

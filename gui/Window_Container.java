@@ -50,9 +50,9 @@ public class Window_Container extends JFrame {
             newVel[1] += 20;
             newVel[2] += 20;
 
-            game.setVelocity(newVel);
+            setVelocity(newVel);
             //frame.repaint();
-            game.update();
+            update();
             try {
                 Thread.sleep(100);
             } catch(Exception e){
@@ -65,7 +65,7 @@ public class Window_Container extends JFrame {
 
     public void kill()
     {
-        dispatchEvent(new WindowEvent(this, WindowEvent.WINDOW_CLOSING));
+        this.dispose();
     }
 
     public void update()

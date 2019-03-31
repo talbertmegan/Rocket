@@ -144,7 +144,7 @@ public class GraphicalUserInterface extends JPanel
 		if(Double.isNaN(thetaOfShip)){
 			thetaOfShip = 0;
 		}
-		System.out.println(thetaOfShip);
+		//System.out.println(thetaOfShip);
 
 		//rotate ship based on its angle of attack
 		g2d.rotate(thetaOfShip, panelCenter[0], panelCenter[1]);//rotate about center
