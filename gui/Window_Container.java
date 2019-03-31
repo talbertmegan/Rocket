@@ -45,7 +45,7 @@ public class Window_Container extends JFrame {
         {
             counter++;
 
-            float [] newVel = game.getVelocity();
+            double [] newVel = game.getVelocity();
             newVel[0] += counter;
             newVel[1] += 20;
             newVel[2] += 20;
@@ -75,22 +75,29 @@ public class Window_Container extends JFrame {
 
     //////////////// Getters and setters //////////////////////////
 
-    public void setPosition(float[] newPosition)
+    public void setPosition(double[] newPosition)
     {
         game.setPosition(newPosition);
     }
 
-    public void setVelocity(float[] newVelocity)
+    public void setVelocity(double[] newVelocity)
     {
         game.setVelocity(newVelocity);
     }
 
-    public float[] getPosition()
+    public void setSystem(double[][] newSystem)
+    {
+
+        game.setSystem(newSystem);
+
+    }
+
+    public double[] getPosition()
     {
         return game.getPosition();
     }
 
-    public float[] getVelocity( )
+    public double[] getVelocity( )
     {
         return game.getVelocity();
     }

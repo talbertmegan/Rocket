@@ -4,9 +4,13 @@
     <list default="true" id="cc37c22d-19cd-4dab-bd4c-92fc007cfa5d" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/GraphicalUserInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/GraphicalUserInterface.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Window_Container.class" beforeDir="false" afterPath="$PROJECT_DIR$/Window_Container.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Window_Container.java" beforeDir="false" afterPath="$PROJECT_DIR$/Window_Container.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../physics.m" beforeDir="false" afterPath="$PROJECT_DIR$/../physics.m" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/gui/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/gui/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/gui/GraphicalUserInterface.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/gui/GraphicalUserInterface.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/gui/Window_Container$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/gui/Window_Container$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/gui/Window_Container.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/gui/Window_Container.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/gui/test_driver.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/gui/test_driver.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_driver.java" beforeDir="false" afterPath="$PROJECT_DIR$/test_driver.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -20,8 +24,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Window_Container.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="810">
-              <caret line="54" column="12" lean-forward="true" selection-start-line="54" selection-start-column="12" selection-end-line="54" selection-end-column="12" />
+            <state relative-caret-position="134">
+              <caret line="73" column="5" lean-forward="true" selection-start-line="73" selection-start-column="5" selection-end-line="73" selection-end-column="5" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#1662#1663#0" expanded="true" />
@@ -42,8 +46,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/test_driver.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret line="2" column="47" selection-start-line="2" selection-start-column="47" selection-end-line="2" selection-end-column="47" />
+            <state relative-caret-position="330">
+              <caret line="48" column="23" selection-start-line="48" selection-start-column="23" selection-end-line="48" selection-end-column="23" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -54,10 +58,20 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/GraphicalUserInterface.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="364">
-              <caret line="151" column="20" lean-forward="true" selection-start-line="151" selection-start-column="20" selection-end-line="151" selection-end-column="20" />
+            <state relative-caret-position="119">
+              <caret line="155" column="30" lean-forward="true" selection-start-line="155" selection-start-column="30" selection-end-line="155" selection-end-column="30" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#4343#4344#0" expanded="true" />
+                <element signature="e#4490#4491#0" expanded="true" />
+                <element signature="e#4525#4526#0" expanded="true" />
+                <element signature="e#4715#4716#0" expanded="true" />
+                <element signature="e#4935#4936#0" expanded="true" />
+                <element signature="e#4962#4963#0" expanded="true" />
+                <element signature="e#5058#5059#0" expanded="true" />
+                <element signature="e#5085#5086#0" expanded="true" />
+                <element signature="e#5123#5124#0" expanded="true" />
+                <element signature="e#5151#5152#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -74,8 +88,8 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>system.</find>
       <find>system</find>
+      <find>system.</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -85,9 +99,9 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/.idea/test_drive.java" />
+        <option value="$PROJECT_DIR$/Window_Container.java" />
         <option value="$PROJECT_DIR$/test_driver.java" />
         <option value="$PROJECT_DIR$/GraphicalUserInterface.java" />
-        <option value="$PROJECT_DIR$/Window_Container.java" />
       </list>
     </option>
   </component>
@@ -123,7 +137,7 @@
     <property name="GenerateAntBuildDialog.enableUiFormCompile" value="true" />
     <property name="GenerateAntBuildDialog.forceTargetJdk" value="true" />
     <property name="GenerateAntBuildDialog.outputFileNameProperty" value="gui" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1553733070142" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1554004211583" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -177,9 +191,8 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="67" y="25" width="1853" height="1055" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.14775872" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.14775872" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -250,8 +263,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/test_driver.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret line="2" column="47" selection-start-line="2" selection-start-column="47" selection-end-line="2" selection-end-column="47" />
+        <state relative-caret-position="330">
+          <caret line="48" column="23" selection-start-line="48" selection-start-column="23" selection-end-line="48" selection-end-column="23" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -260,8 +273,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Window_Container.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="810">
-          <caret line="54" column="12" lean-forward="true" selection-start-line="54" selection-start-column="12" selection-end-line="54" selection-end-column="12" />
+        <state relative-caret-position="134">
+          <caret line="73" column="5" lean-forward="true" selection-start-line="73" selection-start-column="5" selection-end-line="73" selection-end-column="5" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#1662#1663#0" expanded="true" />
@@ -280,10 +293,20 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/GraphicalUserInterface.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="364">
-          <caret line="151" column="20" lean-forward="true" selection-start-line="151" selection-start-column="20" selection-end-line="151" selection-end-column="20" />
+        <state relative-caret-position="119">
+          <caret line="155" column="30" lean-forward="true" selection-start-line="155" selection-start-column="30" selection-end-line="155" selection-end-column="30" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#4343#4344#0" expanded="true" />
+            <element signature="e#4490#4491#0" expanded="true" />
+            <element signature="e#4525#4526#0" expanded="true" />
+            <element signature="e#4715#4716#0" expanded="true" />
+            <element signature="e#4935#4936#0" expanded="true" />
+            <element signature="e#4962#4963#0" expanded="true" />
+            <element signature="e#5058#5059#0" expanded="true" />
+            <element signature="e#5085#5086#0" expanded="true" />
+            <element signature="e#5123#5124#0" expanded="true" />
+            <element signature="e#5151#5152#0" expanded="true" />
           </folding>
         </state>
       </provider>

@@ -6,6 +6,7 @@ import java.awt.event.*;
 import java.awt.*;
 import java.awt.geom.AffineTransform;
 import java.awt.geom.Ellipse2D;
+import java.util.ArrayList;
 
 
 public class GraphicalUserInterface extends JPanel
@@ -14,8 +15,8 @@ public class GraphicalUserInterface extends JPanel
 	////////// Declare variables////////////////////
 
 
-	protected float[] position = new float[3]; //current rocket position
-	protected float[] velocity = new float[3]; //current velocity
+	protected double[] position = new double[3]; //current rocket position
+	protected double[] velocity = new double[3]; //current velocity
 
 
 	private int shipWidth = 20;
@@ -23,7 +24,7 @@ public class GraphicalUserInterface extends JPanel
 
 	private Color shipColor = new Color(250,0,0);
 
-	protected double[][] system; //defines the variables for celestial bodies
+	private double[][] system; //defines the variables for celestial bodies
 
 
 	////////// Constructor(s) /////////////////////
@@ -93,12 +94,10 @@ public class GraphicalUserInterface extends JPanel
 	{
 		int[] bounds = {
 
-				(int) ( (double)findCenterOfPanel()[0] - getCurrentSize().getWidth()/2),
-				(int) ( (double)findCenterOfPanel()[0] + getCurrentSize().getWidth()/2),
-				(int) ( (double)findCenterOfPanel()[1] - getCurrentSize().getHeight()/2),
-				(int) ( (double)findCenterOfPanel()[1] + getCurrentSize().getHeight()/2),
-
-
+				(int) ( (double)position[0] - getCurrentSize().getWidth()/2),
+				(int) ( (double)position[0] + getCurrentSize().getWidth()/2),
+				(int) ( (double)position[1] - getCurrentSize().getHeight()/2),
+				(int) ( (double)position[1] + getCurrentSize().getHeight()/2),
 		};
 
 		return bounds;
@@ -159,6 +158,26 @@ public class GraphicalUserInterface extends JPanel
 		//used to see what needs to be rendered
 		int[] bounds = findBoundsOfScreen();
 
+        ArrayList<double[]> toRender = new ArrayList<>();
+
+		for(int i=0; i < system.length; i++)
+        {
+               //find distance from the shp to the center of the object
+                // if that distance is smaller than the smallest boundary of the screen
+                //then do some more shit to render it
+            double x_temp1 = system[i][0] - position[0],
+                    y_temp2 = system[i][1] - position[1];
+
+            double d = Math.sqrt( x_temp1*x_temp1 + y_temp2*y_temp2);
+
+            if(d < getCurrentSize().getWidth() || d < getCurrentSize().getHeight())
+            {
+
+                toRender.add(system[i]);
+            }
+        }
+
+
 
 	}
 
@@ -173,7 +192,7 @@ public class GraphicalUserInterface extends JPanel
 	 *
 	 * @param new_velocity sets the new velocity for the Rocket
 	 */
-	public void setVelocity(float[] new_velocity){
+	public void setVelocity(double[] new_velocity){
 		this.velocity = new_velocity;
 	}
 
@@ -181,7 +200,7 @@ public class GraphicalUserInterface extends JPanel
 	 *
 	 * @param new_position sets the new position for the Rocket
 	 */
-	public void setPosition(float new_position[]) {
+	public void setPosition(double new_position[]) {
 		this.position = new_position;
 	}
 
@@ -194,7 +213,7 @@ public class GraphicalUserInterface extends JPanel
 	 *
 	 * @return the current position of the rocket
 	 */
-	public float[] getPosition(){
+	public double[] getPosition(){
 		return this.position;
 	}
 
@@ -203,10 +222,9 @@ public class GraphicalUserInterface extends JPanel
 	 *
 	 * @return the current velocity of the rocket
 	 */
-	public float[] getVelocity(){
+	public double[] getVelocity(){
 		return this.velocity;
 	}
-
 
 	public Dimension getCurrentSize(){
 		return this.getSize();

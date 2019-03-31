@@ -16,7 +16,44 @@ public class test_driver
     public static void main(String args[])
     {
 
+
+        /*
+        double [][] test = new double[1][1];
+
+        //System.out.println(test);
+
+        test[0][0] = 10;
+
+        for(int i = 0; i < test.length; i++)
+        {
+            System.out.println(test[0][0]);
+        }
+
+        System.out.println(test[0][0]);
+*/
+
+
+
         Window_Container test = new Window_Container();
+
+        double [][] system = {
+
+                {0, -6.371e6,0,5.972e24,0,0,0,6.371e6},
+
+                {0,383.4e6,0,7.327e22,-1.022e3,0,0,1e6}
+
+        };
+
+        test.setSystem(system);
+
+        test.haveFun();
+
+        /*
+        system = [...
+        [0,-6.371e6,0],5.972e24, [0,0,0], 6.371e6;... %earth
+        [0,383.4e6,0],7.3276e22, [-1.022e3,0,0], 1e6... %moo
+    ];
+         */
 
         test.haveFun();
 
