@@ -14,7 +14,7 @@ clc
 velocity = [0, 0, 0];
 position = [0, 0, 0];
 acceleration = [0, 0, 0]; %pre-init to reduce chance of errors
-thrust = [0,1e7,0]; %rocket thrust
+thrust = [0,1e8,0]; %rocket thrust
 
 
 
@@ -285,6 +285,10 @@ while(timeFromStart <= 200)
    
 end
 %% Clear variables
+
+
+pause(4);
+
 output.kill()
 clear output
 clear all
