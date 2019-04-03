@@ -19,12 +19,14 @@ public class GraphicalUserInterface extends JPanel
 	protected double[] velocity = new double[3]; //current velocity
 
 
-	private int shipWidth = 20;
-	private int shipHeight = 50;
+	private int shipWidth = 10;
+	private int shipHeight = 25;
 
 	private Color shipColor = new Color(250,0,0);
 
 	private double[][] system; //defines the variables for celestial bodies
+
+    private double scale = 0.01; //scale from distance to graphics
 
 
 	////////// Constructor(s) /////////////////////
@@ -156,27 +158,65 @@ public class GraphicalUserInterface extends JPanel
 		g2d.setTransform(old);
 		//find coordinate bounds for the screen next
 		//used to see what needs to be rendered
-		int[] bounds = findBoundsOfScreen();
 
-        ArrayList<double[]> toRender = new ArrayList<>();
+        int [] bounds = findBoundsOfScreen();
 
-		for(int i=0; i < system.length; i++)
-        {
-               //find distance from the shp to the center of the object
-                // if that distance is smaller than the smallest boundary of the screen
-                //then do some more shit to render it
-            double x_temp1 = system[i][0] - position[0],
-                    y_temp2 = system[i][1] - position[1];
+        //find minimum distance something can be while still being rendered
+		double minDistance = Math.sqrt( Math.pow(bounds[0], 2) + Math.pow(bounds[1],2) )/2; // screen diagonal / 2
 
-            double d = Math.sqrt( x_temp1*x_temp1 + y_temp2*y_temp2);
+		g2d.setColor(Color.GREEN);
+		for(int i = 0; i < this.system.length; i++)
+		{
+			//see if any items are within the bounds
+			double xDistance = this.system[i][0] - position[0], // distance from the ship
+					yDistance = this.system[i][1] - position[1];
 
-            if(d < getCurrentSize().getWidth() || d < getCurrentSize().getHeight())
-            {
+			double radial_distance = Math.sqrt( Math.pow(xDistance,2) + Math.pow(yDistance, 2) );
+			//System.out.println("Pre-radius adjustment: " + radial_distance);
 
-                toRender.add(system[i]);
-            }
-        }
+			radial_distance = radial_distance - system[i][7]; // account for the radius of the object
+			//System.out.println("Post-adjustment " + radial_distance);
+			//System.out.println("Where radius = " + system[i][7]);
 
+			//convert radial_distance to radial_distance_in_pixels
+			radial_distance *= this.scale;
+
+			//System.out.println("\nRadial Distance " + radial_distance + "\nMinimum Distance " + minDistance + "\n");
+
+			if(radial_distance <= minDistance)
+			{
+
+				//System.out.println("Hello from within the system renderer!");
+				//then, the object is within reason, so just render it
+
+				//fist, convert distances to pixel numbers
+				xDistance *= this.scale;
+				yDistance *= this.scale;
+				double radius = this.system[i][7] * this.scale;
+
+
+				//because values /down/ are positive, we have to flip the y-axis
+				yDistance *= -1;
+
+				//second, convert x/y distances to distance from top-left corner of the screen!
+				xDistance = xDistance + findCenterOfPanel()[0];
+				yDistance = yDistance + findCenterOfPanel()[1];
+
+				//third, convert x/y coordinates to top-left of the oval!!
+				xDistance = xDistance-radius;
+				yDistance = yDistance-radius;
+
+				//System.out.println("X: " + xDistance + "\nY:" + yDistance + "\nRadius:" + radius);
+
+				//now render
+				g2d.fillOval((int)xDistance, (int)yDistance, 2*(int)radius, 2*(int)radius);
+
+			}
+
+		}
+
+
+        //g2d.fillOval(-25,-25,50,50);
 
 
 	}

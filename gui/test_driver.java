@@ -38,13 +38,26 @@ public class test_driver
 
         double [][] system = {
 
-                {0, -6.371e6,0,5.972e24,0,0,0,6.371e6},
+                {0, -6.371e6, 0, 5.972e24 ,0 ,0 ,0 , 6.371e6},
 
                 {0,383.4e6,0,7.327e22,-1.022e3,0,0,1e6}
 
         };
 
+        System.out.println(system[0][7]);
+
+
+        double [] temp = {0,0,0};
+
+        test.setPosition(temp);
+
         test.setSystem(system);
+
+        try{
+            Thread.sleep(500);
+        }catch(Exception e){
+
+        }
 
         test.haveFun();
 
@@ -54,8 +67,6 @@ public class test_driver
         [0,383.4e6,0],7.3276e22, [-1.022e3,0,0], 1e6... %moo
     ];
          */
-
-        test.haveFun();
 
         /*
         GraphicalUserInterface GUI = new GraphicalUserInterface();

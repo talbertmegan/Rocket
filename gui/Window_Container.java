@@ -46,8 +46,8 @@ public class Window_Container extends JFrame {
             counter++;
 
             double [] newVel = game.getVelocity();
-            newVel[0] += counter;
-            newVel[1] += 20;
+            newVel[0] += 20;
+            newVel[1] += 20*counter;
             newVel[2] += 20;
 
             setVelocity(newVel);
@@ -58,6 +58,13 @@ public class Window_Container extends JFrame {
             } catch(Exception e){
 
             }
+
+            double [] newPos = game.getPosition();
+            newPos[0] += newVel[0];
+            newPos[1] += newVel[1];
+
+            game.setPosition(newPos);
+
 
         }
 
