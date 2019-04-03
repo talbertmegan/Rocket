@@ -1,6 +1,5 @@
 function flag = collision(position, velocity, system)
 
-
     for ii = 1:length(system(:,1))
         
         radial_distance = sqrt( (position(1)-system(ii,1))^2 + (position(2)-system(ii,2))^2);
@@ -11,32 +10,45 @@ function flag = collision(position, velocity, system)
             
             speed = sqrt( velocity(2)^2 + velocity(1)^2);
             
+            %determine direction by unit vectorizing
+            
+            vhat = unitVector(velocity);
+            rhat = unitVector( -1 * position(1:3) + system(ii,1:3));
             
             
-            % direction stuff is fucked up ?
-            vel_direction = atan(velocity(2)/velocity(1));
-            
-            object_direction = -1 * atan( (position(2)-system(ii,2)) / (position(1)-system(ii,1)))
-            
-            if object_direction < vel_direction +0.1 && object_direction > vel_direction - 0.1
+            %fprintf("Vhat = < %f , %f, %f > \n rhat = < %f , %f, %f >\n", vhat, rhat);
+           
+            if rhat(1) < vhat(1) + 1 && rhat(1) > vhat(1) - 1 ...
+                    && rhat(2) < vhat(2) + 1 && rhat(2) > vhat(2) - 1
                 
-                %velocity in direction of object -- bad!
-                if speed > 500
-                    flag = 1 %dead
-                else 
-                    flag = 2 %good
+                if speed > 100
+                    flag = 1;
+                else
+                    flag = 2;
                 end
+                
             else
-                flag = 3; %flying away!
+                flag = 3;
             end
-                      
-            %one collision is all that necessary
+            
             break;
+            
             
         else
             flag = 0; %no collision
         end
     end
 
+end
 
+function length = vectorLength(r)
+    %there should be an easier way to do this with "sum(vector(:))" but it
+    %wasnt working and frankly this works
+    length = sqrt( sum(r(:).^2));
+    length = length';
+
+end
+
+function rhat = unitVector(r)
+    rhat = r ./ vectorLength(r);
 end

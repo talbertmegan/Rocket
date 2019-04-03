@@ -14,7 +14,7 @@ clc
 velocity = [0, 0, 0];
 position = [0, 0, 0];
 acceleration = [0, 0, 0]; %pre-init to reduce chance of errors
-thrust = [1,1e3,0]; %rocket thrust
+thrust = [0,1e7,0]; %rocket thrust
 
 
 
@@ -101,7 +101,7 @@ clear output
  %}
 
 %%this loop is broken on purpose for testing
-while(timeFromStart<=40)
+while(timeFromStart <= 200)
     % TODO this can be optimized by combining linear approximations later
     %also, graphing can be optimized
     
@@ -222,7 +222,7 @@ while(timeFromStart<=40)
     acceleration = findAcceleration(position,thrust,system);
     
     %update velocity of rocket
-    velocity = findVelocity(acceleration, velocity, finddt(t1));
+    velocity = findVelocity(acceleration, velocity, finddt(t1) );
     
     %detect collisions
     collision_flag = collision(position, velocity, system);
@@ -237,7 +237,7 @@ while(timeFromStart<=40)
     %% important to remove this and update to gui!
     thrust = [0,0,0];
     %temp line:
-    position(2);
+    disp(position)
     %+disp(velocity(2))
     
     % f(t) = f(t-dt) + dt*f'(t-dt) is linear approximation, valid for
