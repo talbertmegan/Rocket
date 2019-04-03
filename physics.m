@@ -1,7 +1,7 @@
 % The beginning of the project
 close all
 clear all
-
+clc
 
 %coordinate system is set where launch pad is [0,0,0]
 %   this can be redefined but it would take some work in recalculating the
@@ -14,7 +14,9 @@ clear all
 velocity = [0, 0, 0];
 position = [0, 0, 0];
 acceleration = [0, 0, 0]; %pre-init to reduce chance of errors
-thrust = [0,1e3,0]; %rocket thrust
+thrust = [1,1e3,0]; %rocket thrust
+
+
 
 
 %n-body system properties, initial
@@ -22,8 +24,8 @@ thrust = [0,1e3,0]; %rocket thrust
 %any amount of bodies can be placed inside this system matrix, we chose two
 %because its far easier to test for bugs
 system = [...
-        [0,-6.371e6,0],5.972e24, [0,0,0];... %earth
-        [0,383.4e6,0],7.3276e22, [-1.022e3,0,0]... %moo
+        [0,-6.371e6,0],5.972e24, [0,0,0], 6.371e6;... %earth
+        [0,383.4e6,0],7.3276e22, [-1.022e3,0,0], 1e5... %moon (just made up the radius lol)
     ];
 
 
@@ -56,9 +58,10 @@ output = Window_Container(); %create the output window
 
 output.setVelocity(velocity);
 output.setPosition(position);
+output.setSystem(system);
 
 
-pause(1);
+%pause(1);
 
 
 
@@ -98,7 +101,7 @@ clear output
  %}
 
 %%this loop is broken on purpose for testing
-while(timeFromStart<=5)
+while(timeFromStart<=40)
     % TODO this can be optimized by combining linear approximations later
     %also, graphing can be optimized
     
@@ -218,13 +221,24 @@ while(timeFromStart<=5)
     %update acceleration of rocket
     acceleration = findAcceleration(position,thrust,system);
     
-    %% LOOK AT THIS HARDCODING FOR TESTING IT WILL 100% CAUSE PROBLEMS
-    acceleration = [1*timeFromStart + 25, exp(timeFromStart), 0];
-    
     %update velocity of rocket
     velocity = findVelocity(acceleration, velocity, finddt(t1));
+    
+    %detect collisions
+    collision_flag = collision(position, velocity, system);
+    if collision_flag == 1
+        break;
+    elseif collision_flag == 2
+        velocity = [0,0,0];
+    end
     %update position of rocket
     position = findPosition(velocity, position, finddt(t1));
+    
+    %% important to remove this and update to gui!
+    thrust = [0,0,0];
+    %temp line:
+    position(2);
+    %+disp(velocity(2))
     
     % f(t) = f(t-dt) + dt*f'(t-dt) is linear approximation, valid for
     % sufficiently small dt. used in find functions
@@ -234,9 +248,13 @@ while(timeFromStart<=5)
     %in variable loop speeds
     t1 = clock;
 
+    
+    
+    
     %% Output updates
     output.setVelocity(velocity);
     output.setPosition(position);
+    output.setSystem(system);
     output.update();
     
     %% Old Code
@@ -271,6 +289,8 @@ output.kill()
 clear output
 clear all
 close all
+
+disp("done!")
 
 %% Function finddt finds time since last calculation
 function dt = finddt(t1)
