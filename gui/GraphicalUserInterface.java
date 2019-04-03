@@ -1,11 +1,15 @@
 
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.Graphics;
 import java.awt.event.*;
 import java.awt.*;
 import java.awt.geom.AffineTransform;
 import java.awt.geom.Ellipse2D;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 
 
@@ -37,7 +41,17 @@ public class GraphicalUserInterface extends JPanel
 
 		//TODO add listeners here
 		//TODO allocate UI components
+/*
+		try {
+			BufferedImage myBackgroundPhoto = ImageIO.read(new File("background.jpg"));
+			JLabel picLabel = new JLabel(new ImageIcon(myBackgroundPhoto));
 
+			add(picLabel);
+
+		}catch(IOException e){
+
+		}
+*/
 
 	}
 
@@ -112,8 +126,16 @@ public class GraphicalUserInterface extends JPanel
 
 	@Override
 	public void paintComponent(Graphics g){
-		super.paintComponent(g);
-		setBackground(Color.BLACK);
+
+		try {
+
+			Image bg = ImageIO.read(new File("background.jpg"));
+			bg = bg.getScaledInstance((int)getCurrentSize().getWidth(), (int)getCurrentSize().getHeight(), Image.SCALE_DEFAULT);
+			g.drawImage(bg,0,0, null);
+
+		}catch(Exception e){
+			setBackground(Color.BLACK);
+		}
 
 		//makes 2d graphics easier
 		Graphics2D g2d = (Graphics2D)g;
