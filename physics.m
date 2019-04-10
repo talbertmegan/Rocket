@@ -14,7 +14,7 @@ clc
 velocity = [0, 0, 0];
 position = [0, 0, 0];
 acceleration = [0, 0, 0]; %pre-init to reduce chance of errors
-thrust = [0,1e8,0]; %rocket thrust
+thrust = [0,0,0]; %rocket thrust
 
 
 
@@ -61,9 +61,6 @@ output.setPosition(position);
 output.setSystem(system);
 
 
-%pause(1);
-
-
 
 startTime = clock; %used in x-axis calculation for graphing
 timeFromStart = 0; %pre-declare so while-loop doesn't mess up (do while)
@@ -100,13 +97,16 @@ pause(2);
 clear output
  %}
 
+
 %%this loop is broken on purpose for testing
-while(timeFromStart <= 200)
+while(timeFromStart <= 200 && output.isVisible())
     % TODO this can be optimized by combining linear approximations later
     %also, graphing can be optimized
     
     %%Loop counter variable
     timeFromStart = etime(t1, startTime);
+    
+    thrust = thrust + [0,exp(timeFromStart-10),0];
     
     %%GRAPHING (commented out bc jfc its slow)
     %{
@@ -225,6 +225,7 @@ while(timeFromStart <= 200)
     velocity = findVelocity(acceleration, velocity, finddt(t1) );
     
     %detect collisions
+    
     collision_flag = collision(position, velocity, system);
     if collision_flag == 1
         break;
@@ -234,11 +235,7 @@ while(timeFromStart <= 200)
     %update position of rocket
     position = findPosition(velocity, position, finddt(t1));
     
-    %% important to remove this and update to gui!
-    thrust = [0,0,0];
-    %temp line:
-    disp(position)
-    %+disp(velocity(2))
+    
     
     % f(t) = f(t-dt) + dt*f'(t-dt) is linear approximation, valid for
     % sufficiently small dt. used in find functions
@@ -286,15 +283,24 @@ while(timeFromStart <= 200)
 end
 %% Clear variables
 
-
-pause(4);
-
+%ensure output is closed
 output.kill()
 clear output
-clear all
 close all
 
 disp("done!")
+
+if(collision_flag == 0)
+    disp("No collision");
+elseif(collision_flag == 1)
+    disp("You died")
+elseif(collision_flag == 2)
+    disp("Sucessful landings... somewhere");
+end
+
+
+%% And goodbye
+clear all
 
 %% Function finddt finds time since last calculation
 function dt = finddt(t1)

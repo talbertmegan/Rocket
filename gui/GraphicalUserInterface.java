@@ -1,16 +1,15 @@
 
 
+import org.w3c.dom.css.Rect;
+
 import javax.imageio.ImageIO;
 import javax.swing.*;
-import java.awt.Graphics;
-import java.awt.event.*;
 import java.awt.*;
 import java.awt.geom.AffineTransform;
-import java.awt.geom.Ellipse2D;
+import java.awt.geom.Rectangle2D;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
 
 
 public class GraphicalUserInterface extends JPanel
@@ -32,6 +31,8 @@ public class GraphicalUserInterface extends JPanel
 
     private double scale = 0.01; //scale from distance to graphics
 
+	private BufferedImage [] textures;
+
 
 	////////// Constructor(s) /////////////////////
 
@@ -39,20 +40,23 @@ public class GraphicalUserInterface extends JPanel
 	{
 
 
-		//TODO add listeners here
-		//TODO allocate UI components
-/*
-		try {
-			BufferedImage myBackgroundPhoto = ImageIO.read(new File("background.jpg"));
-			JLabel picLabel = new JLabel(new ImageIcon(myBackgroundPhoto));
+        try {
+            textures = new BufferedImage[2];
+            textures[0] = ImageIO.read(new File("earth.png"));
+            textures[1] = ImageIO.read(new File("moon.png"));
 
-			add(picLabel);
 
-		}catch(IOException e){
+        }catch(IOException e) {
+            try {
+                textures = new BufferedImage[2];
+                textures[0] = ImageIO.read(new File("gui/earth.png"));
+                textures[1] = ImageIO.read(new File("gui/moon.png"));
+            } catch (IOException ee) {
+                e.printStackTrace();
+                textures = null;
+            }
 
-		}
-*/
-
+        }
 	}
 
 
@@ -143,10 +147,6 @@ public class GraphicalUserInterface extends JPanel
 		//original orientation
 		AffineTransform old = g2d.getTransform();
 
-		//TODO add drawing code here
-
-
-		//TODO add angling to the rocket (so if it turns, the rocket will move)
 		//Draw the rocket (always in the center
 
 		/* tests velocity angling for the drawing
@@ -188,6 +188,8 @@ public class GraphicalUserInterface extends JPanel
 		double minDistance = Math.sqrt( Math.pow(bounds[0], 2) + Math.pow(bounds[1],2) )/2; // screen diagonal / 2
 
 	g2d.setColor(Color.GREEN);
+
+
 	for (int i = 0; i < this.system.length; i++) {
 		//see if any items are within the bounds
 		double xDistance = this.system[i][0] - position[0], // distance from the ship
@@ -210,6 +212,8 @@ public class GraphicalUserInterface extends JPanel
 			//System.out.println("Hello from within the system renderer!");
 			//then, the object is within reason, so just render it
 
+
+
 			//fist, convert distances to pixel numbers
 			xDistance *= this.scale;
 			yDistance *= this.scale;
@@ -230,8 +234,29 @@ public class GraphicalUserInterface extends JPanel
 			//System.out.println("X: " + xDistance + "\nY:" + yDistance + "\nRadius:" + radius);
 
 			//now render
-			g2d.fillOval((int) xDistance, (int) yDistance, 2 * (int) radius, 2 * (int) radius);
+			try{
 
+			    // TODO fix the scaling of the stuff
+                // bc what happens now is the scaling is whack
+                // so i forced it to work for earth
+                // but any other size.... idk its weird
+                // like the moon should be much bigger lol
+                // and we need it to work for an n-body system so .... !!!
+
+				TexturePaint tp = new TexturePaint( textures[i], new Rectangle((int)xDistance, (int)yDistance,(int)(2*radius), (int)(2*radius)  ));
+
+				g2d.setPaint(tp);
+
+				Rectangle2D rect = new Rectangle( (int)xDistance, (int)yDistance, (int)(2*radius), (int)(2*radius) );
+
+				g2d.fill(rect);
+
+
+			}catch(Exception e) {
+				e.printStackTrace();
+				g2d.setColor(Color.GREEN);
+				g2d.fillOval((int) xDistance, (int) yDistance, 2 * (int) radius, 2 * (int) radius);
+			}
 		}
 
 	}
@@ -268,7 +293,6 @@ public class GraphicalUserInterface extends JPanel
 	public void setSystem(double[][] currentSystem){
 		//TODO remove extraneous information (don't need mass for example)
 		this.system = currentSystem;
-		System.out.println(system);
 	}
 
 	/**

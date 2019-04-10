@@ -25,7 +25,7 @@ public class Window_Container extends JFrame {
                 //frame.getContentPane().add(new JLabel("TEST"));
 
                 // some misc cleanup for the window
-                setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                setDefaultCloseOperation(HIDE_ON_CLOSE);
                 setLocationRelativeTo(null);
                 pack();
 
@@ -34,6 +34,7 @@ public class Window_Container extends JFrame {
 
                    //done!
                 setVisible(true);
+
             }
         });
     }
@@ -46,9 +47,9 @@ public class Window_Container extends JFrame {
             counter++;
 
             double [] newVel = game.getVelocity();
-            newVel[0] += 20;
-            newVel[1] += 20*counter;
-            newVel[2] += 20;
+           // newVel[0] += 2e6;
+            newVel[1] += 2e6*counter;
+            newVel[2] += 2e6;
 
             setVelocity(newVel);
             //frame.repaint();
@@ -60,7 +61,7 @@ public class Window_Container extends JFrame {
             }
 
             double [] newPos = game.getPosition();
-            newPos[0] += newVel[0];
+            //newPos[0] += newVel[0];
             newPos[1] += newVel[1];
 
             game.setPosition(newPos);
