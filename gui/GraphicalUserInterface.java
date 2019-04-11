@@ -131,138 +131,137 @@ public class GraphicalUserInterface extends JPanel
 	@Override
 	public void paintComponent(Graphics g){
 
-		try {
+			try {
 
-			Image bg = ImageIO.read(new File("background.jpg"));
-			bg = bg.getScaledInstance((int)getCurrentSize().getWidth(), (int)getCurrentSize().getHeight(), Image.SCALE_DEFAULT);
-			g.drawImage(bg,0,0, null);
+				Image bg = ImageIO.read(new File("background.jpg"));
+				bg = bg.getScaledInstance((int)getCurrentSize().getWidth(), (int)getCurrentSize().getHeight(), Image.SCALE_DEFAULT);
+				g.drawImage(bg,0,0, null);
 
-		}catch(Exception e){
-			setBackground(Color.BLACK);
-		}
-
-		//makes 2d graphics easier
-		Graphics2D g2d = (Graphics2D)g;
-
-		//original orientation
-		AffineTransform old = g2d.getTransform();
-
-		//Draw the rocket (always in the center
-
-		/* tests velocity angling for the drawing
-		float[] vel = new float[] {0,50,0};
-		setVelocity( vel);
-		*/
-
-		//find center for rotation stuff
-		int[] panelCenter = findCenterOfPanel();
-
-		///////DRAW SHIP
-
-		//find where to draw the ship
-		int [] shipAdjustedCoordinates = findCenterCoordinatesForAShape(this.shipWidth, this.shipHeight);
-
-		//assuming y is upwards on the screen :)
-		double thetaOfShip = Math.atan( (double) getVelocity()[0]/getVelocity()[1] );
-		if(Double.isNaN(thetaOfShip)){
-			thetaOfShip = 0;
-		}
-		//System.out.println(thetaOfShip);
-
-		//rotate ship based on its angle of attack
-		g2d.rotate(thetaOfShip, panelCenter[0], panelCenter[1]);//rotate about center
-
-		//set color for ship and draw it
-		g2d.setColor(shipColor);
-		g2d.fillOval(shipAdjustedCoordinates[0], shipAdjustedCoordinates[1], this.shipWidth, this.shipHeight);
-
-		//reset rotation
-		g2d.setTransform(old);
-		//find coordinate bounds for the screen next
-		//used to see what needs to be render		for(int i = 0; i < this.system.length; i++)
-
-
-        int [] bounds = findBoundsOfScreen();
-
-        //find minimum distance something can be while still being rendered
-		double minDistance = Math.sqrt( Math.pow(bounds[0], 2) + Math.pow(bounds[1],2) )/2; // screen diagonal / 2
-
-	g2d.setColor(Color.GREEN);
-
-
-	for (int i = 0; i < this.system.length; i++) {
-		//see if any items are within the bounds
-		double xDistance = this.system[i][0] - position[0], // distance from the ship
-				yDistance = this.system[i][1] - position[1];
-
-		double radial_distance = Math.sqrt(Math.pow(xDistance, 2) + Math.pow(yDistance, 2));
-		//System.out.println("Pre-radius adjustment: " + radial_distance);
-
-		radial_distance = radial_distance - system[i][7]; // account for the radius of the object
-		//System.out.println("Post-adjustment " + radial_distance);
-		//System.out.println("Where radius = " + system[i][7]);
-
-		//convert radial_distance to radial_distance_in_pixels
-		radial_distance *= this.scale;
-
-		//System.out.println("\nRadial Distance " + radial_distance + "\nMinimum Distance " + minDistance + "\n");
-
-		if (radial_distance <= minDistance) {
-
-			//System.out.println("Hello from within the system renderer!");
-			//then, the object is within reason, so just render it
-
-
-
-			//fist, convert distances to pixel numbers
-			xDistance *= this.scale;
-			yDistance *= this.scale;
-			double radius = this.system[i][7] * this.scale;
-
-
-			//because values /down/ are positive, we have to flip the y-axis
-			yDistance *= -1;
-
-			//second, convert x/y distances to distance from top-left corner of the screen!
-			xDistance = xDistance + findCenterOfPanel()[0];
-			yDistance = yDistance + findCenterOfPanel()[1];
-
-			//third, convert x/y coordinates to top-left of the oval!!
-			xDistance = xDistance - radius;
-			yDistance = yDistance - radius;
-
-			//System.out.println("X: " + xDistance + "\nY:" + yDistance + "\nRadius:" + radius);
-
-			//now render
-			try{
-
-			    // TODO fix the scaling of the stuff
-                // bc what happens now is the scaling is whack
-                // so i forced it to work for earth
-                // but any other size.... idk its weird
-                // like the moon should be much bigger lol
-                // and we need it to work for an n-body system so .... !!!
-
-				TexturePaint tp = new TexturePaint( textures[i], new Rectangle((int)xDistance, (int)yDistance,(int)(2*radius), (int)(2*radius)  ));
-
-				g2d.setPaint(tp);
-
-				Rectangle2D rect = new Rectangle( (int)xDistance, (int)yDistance, (int)(2*radius), (int)(2*radius) );
-
-				g2d.fill(rect);
-
-
-			}catch(Exception e) {
-				e.printStackTrace();
-				g2d.setColor(Color.GREEN);
-				g2d.fillOval((int) xDistance, (int) yDistance, 2 * (int) radius, 2 * (int) radius);
+			}catch(Exception e){
+				setBackground(Color.BLACK);
 			}
+
+			//makes 2d graphics easier
+			Graphics2D g2d = (Graphics2D)g;
+
+			//original orientation
+			AffineTransform old = g2d.getTransform();
+
+			//Draw the rocket (always in the center
+
+			/* tests velocity angling for the drawing
+			float[] vel = new float[] {0,50,0};
+			setVelocity( vel);
+			*/
+
+			//find center for rotation stuff
+			int[] panelCenter = findCenterOfPanel();
+
+			///////DRAW SHIP
+
+			//find where to draw the ship
+			int [] shipAdjustedCoordinates = findCenterCoordinatesForAShape(this.shipWidth, this.shipHeight);
+
+			//assuming y is upwards on the screen :)
+			double thetaOfShip = Math.atan( (double) getVelocity()[0]/getVelocity()[1] );
+			if(Double.isNaN(thetaOfShip)){
+				thetaOfShip = 0;
+			}
+			//System.out.println(thetaOfShip);
+
+			//rotate ship based on its angle of attack
+			g2d.rotate(thetaOfShip, panelCenter[0], panelCenter[1]);//rotate about center
+
+			//set color for ship and draw it
+			g2d.setColor(shipColor);
+			g2d.fillOval(shipAdjustedCoordinates[0], shipAdjustedCoordinates[1], this.shipWidth, this.shipHeight);
+
+			//reset rotation
+			g2d.setTransform(old);
+			//find coordinate bounds for the screen next
+			//used to see what needs to be render		for(int i = 0; i < this.system.length; i++)
+
+
+			int [] bounds = findBoundsOfScreen();
+
+			//find minimum distance something can be while still being rendered
+			double minDistance = Math.sqrt( Math.pow(bounds[0], 2) + Math.pow(bounds[1],2) )/2; // screen diagonal / 2
+
+		g2d.setColor(Color.GREEN);
+
+
+		for (int i = 0; i < this.system.length; i++) {
+			//see if any items are within the bounds
+			double xDistance = this.system[i][0] - position[0], // distance from the ship
+					yDistance = this.system[i][1] - position[1];
+
+			double radial_distance = Math.sqrt(Math.pow(xDistance, 2) + Math.pow(yDistance, 2));
+			//System.out.println("Pre-radius adjustment: " + radial_distance);
+
+			radial_distance = radial_distance - system[i][7]; // account for the radius of the object
+			//System.out.println("Post-adjustment " + radial_distance);
+			//System.out.println("Where radius = " + system[i][7]);
+
+			//convert radial_distance to radial_distance_in_pixels
+			radial_distance *= this.scale;
+
+			//System.out.println("\nRadial Distance " + radial_distance + "\nMinimum Distance " + minDistance + "\n");
+
+			if (radial_distance <= minDistance) {
+
+				//System.out.println("Hello from within the system renderer!");
+				//then, the object is within reason, so just render it
+
+
+
+				//fist, convert distances to pixel numbers
+				xDistance *= this.scale;
+				yDistance *= this.scale;
+				double radius = this.system[i][7] * this.scale;
+
+
+				//because values /down/ are positive, we have to flip the y-axis
+				yDistance *= -1;
+
+				//second, convert x/y distances to distance from top-left corner of the screen!
+				xDistance = xDistance + findCenterOfPanel()[0];
+				yDistance = yDistance + findCenterOfPanel()[1];
+
+				//third, convert x/y coordinates to top-left of the oval!!
+				xDistance = xDistance - radius;
+				yDistance = yDistance - radius;
+
+				//System.out.println("X: " + xDistance + "\nY:" + yDistance + "\nRadius:" + radius);
+
+				//now render
+				try{
+
+					// TODO fix the scaling of the stuff
+					
+					// bc what happens now is the scaling is whack
+					// so i forced it to work for earth
+					// but any other size.... idk its weird
+					// like the moon should be much bigger lol
+					// and we need it to work for an n-body system so .... !!!
+
+					TexturePaint tp = new TexturePaint( textures[i], new Rectangle((int)xDistance, (int)yDistance,(int)(2*radius), (int)(2*radius)  ));
+
+					g2d.setPaint(tp);
+
+					Rectangle2D rect = new Rectangle( (int)xDistance, (int)yDistance, (int)(2*radius), (int)(2*radius) );
+
+					g2d.fill(rect);
+
+
+				}catch(Exception e) {
+					e.printStackTrace();
+					g2d.setColor(Color.GREEN);
+					g2d.fillOval((int) xDistance, (int) yDistance, 2 * (int) radius, 2 * (int) radius);
+				}
+			}
+
 		}
 
-	}
-
-
-	//g2d.fillOval(-25,-25,50,50);
 
 
 	}

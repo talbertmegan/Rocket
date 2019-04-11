@@ -99,14 +99,14 @@ clear output
 
 
 %%this loop is broken on purpose for testing
-while(timeFromStart <= 200 && output.isVisible())
+while(timeFromStart <= 400 && output.isVisible())
     % TODO this can be optimized by combining linear approximations later
     %also, graphing can be optimized
     
     %%Loop counter variable
     timeFromStart = etime(t1, startTime);
     
-    thrust = thrust + [0,exp(timeFromStart-10),0];
+    thrust = thrust + [0,exp(timeFromStart),0];
     
     %%GRAPHING (commented out bc jfc its slow)
     %{
@@ -300,7 +300,6 @@ end
 
 
 %% And goodbye
-clear all
 
 %% Function finddt finds time since last calculation
 function dt = finddt(t1)
