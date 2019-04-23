@@ -6,51 +6,52 @@ import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.geom.AffineTransform;
+import java.awt.geom.Ellipse2D;
 import java.awt.geom.Rectangle2D;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
 
-public class GraphicalUserInterface extends JPanel
+public class GraphicalUserInterface extends GUI_PANEL_SUPER
 {
 
 	////////// Declare variables////////////////////
 
+    //Ideally, this info should be passed in, but frankly this is just as easy
 
-	protected double[] position = new double[3]; //current rocket position
-	protected double[] velocity = new double[3]; //current velocity
+	private final int shipWidth = 10;
+	private final int shipHeight = 25;
 
+	// if the ship is 25 units tall, and rockets are 70 meters tall
 
-	private int shipWidth = 10;
-	private int shipHeight = 25;
+	private final double scale =25.0/70.0;
 
 	private Color shipColor = new Color(250,0,0);
-
-	private double[][] system; //defines the variables for celestial bodies
-
-    private double scale = 0.01; //scale from distance to graphics
 
 	private BufferedImage [] textures;
 
 
 	////////// Constructor(s) /////////////////////
 
-	public GraphicalUserInterface()
+	GraphicalUserInterface()
 	{
 
+        super(); //not really required but a nice reminder
 
         try {
             textures = new BufferedImage[2];
-            textures[0] = ImageIO.read(new File("earth.png"));
-            textures[1] = ImageIO.read(new File("moon.png"));
+            textures[0] = ImageIO.read(new File("earth-texture.png"));
+            textures[1] = ImageIO.read(new File("moon_texture.png"));
 
 
         }catch(IOException e) {
             try {
+
                 textures = new BufferedImage[2];
                 textures[0] = ImageIO.read(new File("gui/earth.png"));
                 textures[1] = ImageIO.read(new File("gui/moon.png"));
+
             } catch (IOException ee) {
                 e.printStackTrace();
                 textures = null;
@@ -148,12 +149,6 @@ public class GraphicalUserInterface extends JPanel
 			AffineTransform old = g2d.getTransform();
 
 			//Draw the rocket (always in the center
-
-			/* tests velocity angling for the drawing
-			float[] vel = new float[] {0,50,0};
-			setVelocity( vel);
-			*/
-
 			//find center for rotation stuff
 			int[] panelCenter = findCenterOfPanel();
 
@@ -167,12 +162,11 @@ public class GraphicalUserInterface extends JPanel
 			if(Double.isNaN(thetaOfShip)){
 				thetaOfShip = 0;
 			}
-			//System.out.println(thetaOfShip);
 
 			//rotate ship based on its angle of attack
 			g2d.rotate(thetaOfShip, panelCenter[0], panelCenter[1]);//rotate about center
 
-			//set color for ship and draw it
+			//set color for ship and drawbounds it
 			g2d.setColor(shipColor);
 			g2d.fillOval(shipAdjustedCoordinates[0], shipAdjustedCoordinates[1], this.shipWidth, this.shipHeight);
 
@@ -189,7 +183,6 @@ public class GraphicalUserInterface extends JPanel
 
 		g2d.setColor(Color.GREEN);
 
-
 		for (int i = 0; i < this.system.length; i++) {
 			//see if any items are within the bounds
 			double xDistance = this.system[i][0] - position[0], // distance from the ship
@@ -202,19 +195,16 @@ public class GraphicalUserInterface extends JPanel
 			//System.out.println("Post-adjustment " + radial_distance);
 			//System.out.println("Where radius = " + system[i][7]);
 
-			//convert radial_distance to radial_distance_in_pixels
+			//convert radial_distance to radial_distance_in_screen_units
 			radial_distance *= this.scale;
 
-			//System.out.println("\nRadial Distance " + radial_distance + "\nMinimum Distance " + minDistance + "\n");
 
 			if (radial_distance <= minDistance) {
 
-				//System.out.println("Hello from within the system renderer!");
 				//then, the object is within reason, so just render it
 
-
-
 				//fist, convert distances to pixel numbers
+
 				xDistance *= this.scale;
 				yDistance *= this.scale;
 				double radius = this.system[i][7] * this.scale;
@@ -237,26 +227,42 @@ public class GraphicalUserInterface extends JPanel
 				try{
 
 					// TODO fix the scaling of the stuff
-					
+
 					// bc what happens now is the scaling is whack
 					// so i forced it to work for earth
 					// but any other size.... idk its weird
 					// like the moon should be much bigger lol
 					// and we need it to work for an n-body system so .... !!!
 
-					TexturePaint tp = new TexturePaint( textures[i], new Rectangle((int)xDistance, (int)yDistance,(int)(2*radius), (int)(2*radius)  ));
+					int width = (int)(2*radius),
+							height = (int)(2*radius);
+					int k = 1;
+					if(i == 0)
+						k = 4000;
+					else if(i == 1)
+							k = 500;
+
+        			TexturePaint tp = new TexturePaint( textures[i], new Rectangle((int)xDistance, (int)yDistance,width/k,height/k));
 
 					g2d.setPaint(tp);
 
-					Rectangle2D rect = new Rectangle( (int)xDistance, (int)yDistance, (int)(2*radius), (int)(2*radius) );
+					/*
+					Rectangle2D rect = new Rectangle( (int)xDistance, (int)yDistance, width, height );
 
 					g2d.fill(rect);
+					*/
 
+					Ellipse2D ellip = new Ellipse2D.Double(xDistance, yDistance, width, height);
+					g2d.fill(ellip);
+
+					System.out.println("Hello from rendering");
 
 				}catch(Exception e) {
+
 					e.printStackTrace();
 					g2d.setColor(Color.GREEN);
 					g2d.fillOval((int) xDistance, (int) yDistance, 2 * (int) radius, 2 * (int) radius);
+
 				}
 			}
 
@@ -266,53 +272,13 @@ public class GraphicalUserInterface extends JPanel
 
 	}
 
+    /**
+     * Forces the frame to update for drawing, not really used since window_container will call repaint when it updates
+     */
 	public void update()
 	{
 		this.repaint();
 	}
 
-	////////// GETTERS AND SETTERS ///////////////
-
-	/***
-	 *
-	 * @param new_velocity sets the new velocity for the Rocket
-	 */
-	public void setVelocity(double[] new_velocity){
-		this.velocity = new_velocity;
-	}
-
-	/***
-	 *
-	 * @param new_position sets the new position for the Rocket
-	 */
-	public void setPosition(double new_position[]) {
-		this.position = new_position;
-	}
-
-	public void setSystem(double[][] currentSystem){
-		//TODO remove extraneous information (don't need mass for example)
-		this.system = currentSystem;
-	}
-
-	/**
-	 *
-	 * @return the current position of the rocket
-	 */
-	public double[] getPosition(){
-		return this.position;
-	}
-
-
-	/***
-	 *
-	 * @return the current velocity of the rocket
-	 */
-	public double[] getVelocity(){
-		return this.velocity;
-	}
-
-	public Dimension getCurrentSize(){
-		return this.getSize();
-	}
 
 }

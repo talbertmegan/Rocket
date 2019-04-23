@@ -12,9 +12,9 @@ clc
 
 %rocket properties
 velocity = [0, 0, 0];
-position = [0, 0, 0];
+position = [0, 383.4e6-1e5-1e3, 0];
 acceleration = [0, 0, 0]; %pre-init to reduce chance of errors
-thrust = [0,0,0]; %rocket thrust
+thrust = [5e2,-400,0]; %rocket thrust
 
 
 
@@ -106,7 +106,7 @@ while(timeFromStart <= 400 && output.isVisible())
     %%Loop counter variable
     timeFromStart = etime(t1, startTime);
     
-    thrust = thrust + [0,exp(timeFromStart),0];
+    
     
     %%GRAPHING (commented out bc jfc its slow)
     %{
@@ -224,8 +224,7 @@ while(timeFromStart <= 400 && output.isVisible())
     %update velocity of rocket
     velocity = findVelocity(acceleration, velocity, finddt(t1) );
     
-    %detect collisions
-    
+    %% detect collisions
     collision_flag = collision(position, velocity, system);
     if collision_flag == 1
         break;
@@ -282,6 +281,8 @@ while(timeFromStart <= 400 && output.isVisible())
    
 end
 %% Clear variables
+
+pause(5);
 
 %ensure output is closed
 output.kill()

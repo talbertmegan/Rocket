@@ -2,9 +2,38 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cc37c22d-19cd-4dab-bd4c-92fc007cfa5d" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/GUI_PANEL.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/GUI_PANEL_SUPER.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../background.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../collision.m" beforeDir="false" afterPath="$PROJECT_DIR$/../collision.m" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GraphicalUserInterface.class" beforeDir="false" afterPath="$PROJECT_DIR$/GraphicalUserInterface.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/GraphicalUserInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/GraphicalUserInterface.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/earth.png" beforeDir="false" afterPath="$PROJECT_DIR$/earth.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Window_Container.java" beforeDir="false" afterPath="$PROJECT_DIR$/Window_Container.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/background.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/color splash.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/earth.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/earth.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/earth_PNG7.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/moon.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/gui/.idea/encodings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/gui/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/gui/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/gui/.idea/uiDesigner.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/gui/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/gui/.idea/workspace.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/gui/GraphicalUserInterface.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/gui/Window_Container$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/gui/Window_Container.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/gui/background.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/gui/color splash.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/gui/earth.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/gui/earth.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/gui/earth_PNG7.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/gui/gui.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/gui/moon.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/gui/test_driver.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_driver.java" beforeDir="false" afterPath="$PROJECT_DIR$/test_driver.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../physics.m" beforeDir="false" afterPath="$PROJECT_DIR$/../physics.m" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -19,22 +48,12 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Window_Container.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="345">
-              <caret line="27" column="54" selection-start-line="27" selection-start-column="54" selection-end-line="27" selection-end-column="54" />
+            <state relative-caret-position="885">
+              <caret line="68" column="34" selection-start-line="68" selection-start-column="34" selection-end-line="68" selection-end-column="34" />
               <folding>
                 <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/test_driver.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="120">
-              <caret line="11" selection-start-line="11" selection-end-line="11" />
-              <folding>
-                <element signature="imports" expanded="true" />
+                <element signature="e#1600#1601#0" expanded="true" />
+                <element signature="e#1641#1642#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -43,14 +62,36 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/GraphicalUserInterface.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="420">
-              <caret line="239" column="20" selection-start-line="239" selection-start-column="20" selection-end-line="239" selection-end-column="20" />
+            <state relative-caret-position="281">
+              <caret line="160" column="60" selection-start-line="160" selection-start-column="53" selection-end-line="160" selection-end-column="60" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#7192#7193#0" expanded="true" />
-                <element signature="e#7213#7214#0" expanded="true" />
-                <element signature="e#7550#7551#0" expanded="true" />
-                <element signature="e#7585#7586#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/GUI_PANEL_SUPER.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="454">
+              <caret line="55" column="13" selection-start-line="55" selection-start-column="13" selection-end-line="55" selection-end-column="13" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#618#619#0" expanded="true" />
+                <element signature="e#649#650#0" expanded="true" />
+                <element signature="e#803#804#0" expanded="true" />
+                <element signature="e#822#823#0" expanded="true" />
+                <element signature="e#1157#1158#0" expanded="true" />
+                <element signature="e#1187#1188#0" expanded="true" />
+                <element signature="e#1381#1382#0" expanded="true" />
+                <element signature="e#1411#1412#0" expanded="true" />
+                <element signature="e#1457#1458#0" expanded="true" />
+                <element signature="e#1492#1493#0" expanded="true" />
+                <element signature="e#1624#1625#0" expanded="true" />
+                <element signature="e#1659#1660#0" expanded="true" />
+                <element signature="e#1785#1786#0" expanded="true" />
+                <element signature="e#1822#1823#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -61,6 +102,7 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
@@ -70,6 +112,8 @@
       <find>system</find>
       <find>system.</find>
       <find>system.out</find>
+      <find>scale</find>
+      <find>bounds</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -79,9 +123,13 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/.idea/test_drive.java" />
+        <option value="$PROJECT_DIR$/messy_test_driver.java" />
+        <option value="$PROJECT_DIR$/Messy_test.java" />
         <option value="$PROJECT_DIR$/test_driver.java" />
+        <option value="$PROJECT_DIR$/GUI_PANEL.java" />
         <option value="$PROJECT_DIR$/Window_Container.java" />
         <option value="$PROJECT_DIR$/GraphicalUserInterface.java" />
+        <option value="$PROJECT_DIR$/GUI_PANEL_SUPER.java" />
       </list>
     </option>
   </component>
@@ -97,6 +145,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -109,7 +158,6 @@
         </subPane>
       </pane>
       <pane id="Scope" />
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -117,7 +165,7 @@
     <property name="GenerateAntBuildDialog.enableUiFormCompile" value="true" />
     <property name="GenerateAntBuildDialog.forceTargetJdk" value="true" />
     <property name="GenerateAntBuildDialog.outputFileNameProperty" value="gui" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1554924509463" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1555961338515" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -134,7 +182,14 @@
       </list>
     </option>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.test_driver">
+    <configuration name="messy_test_driver" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="messy_test_driver" />
+      <module name="gui" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="test_driver" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="test_driver" />
       <module name="gui" />
@@ -145,6 +200,7 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.test_driver" />
+        <item itemvalue="Application.messy_test_driver" />
       </list>
     </recent_temporary>
   </component>
@@ -171,9 +227,8 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="67" y="25" width="1853" height="1055" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.16712783" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" side_tool="true" visible="true" weight="0.16878805" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -182,7 +237,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.46212122" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.16414687" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39956802" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -233,6 +288,18 @@
     <MESSAGE value="added gui" />
     <option name="LAST_COMMIT_MESSAGE" value="added gui" />
   </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>jrt:///usr/lib/jvm/java-1.11.0-openjdk-amd64!/java.desktop/javax/swing/JComponent.class</url>
+          <line>348</line>
+          <properties />
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/.idea/test_drive.java" />
     <entry file="jrt:///usr/lib/jvm/java-1.11.0-openjdk-amd64!/java.base/java/lang/Runnable.class">
@@ -242,43 +309,101 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/GraphicalUserInterface.class">
+    <entry file="file://$PROJECT_DIR$/Messy_test.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="16" selection-start-line="16" selection-end-line="16" />
+        <state relative-caret-position="540">
+          <caret line="73" column="81" selection-start-line="73" selection-start-column="81" selection-end-line="73" selection-end-column="81" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="class#window#0;class#Messy_test#0" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Window_Container.java">
+    <entry file="file://$PROJECT_DIR$/messy_test_driver.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="27" column="54" selection-start-line="27" selection-start-column="54" selection-end-line="27" selection-end-column="54" />
+        <state relative-caret-position="75">
+          <caret line="5" column="5" selection-start-line="5" selection-start-column="5" selection-end-line="5" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test_driver.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="420">
+          <caret line="30" column="30" selection-start-line="30" selection-start-column="30" selection-end-line="30" selection-end-column="30" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test_driver.java">
+    <entry file="file://$PROJECT_DIR$/GUI_PANEL.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="11" selection-start-line="11" selection-end-line="11" />
+        <state relative-caret-position="105">
+          <caret line="7" column="38" selection-start-line="7" selection-start-column="38" selection-end-line="7" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Window_Container.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="885">
+          <caret line="68" column="34" selection-start-line="68" selection-start-column="34" selection-end-line="68" selection-end-column="34" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#1600#1601#0" expanded="true" />
+            <element signature="e#1641#1642#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/GraphicalUserInterface.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="11" column="29" lean-forward="true" selection-start-line="11" selection-start-column="29" selection-end-line="17" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jrt:///usr/lib/jvm/java-1.11.0-openjdk-amd64!/java.desktop/javax/swing/JComponent.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="299">
+          <caret line="362" column="19" selection-start-line="362" selection-start-column="19" selection-end-line="362" selection-end-column="19" />
+          <folding>
+            <element signature="e#12878#12879#0" expanded="true" />
+            <element signature="e#12914#12915#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/GUI_PANEL_SUPER.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="454">
+          <caret line="55" column="13" selection-start-line="55" selection-start-column="13" selection-end-line="55" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#618#619#0" expanded="true" />
+            <element signature="e#649#650#0" expanded="true" />
+            <element signature="e#803#804#0" expanded="true" />
+            <element signature="e#822#823#0" expanded="true" />
+            <element signature="e#1157#1158#0" expanded="true" />
+            <element signature="e#1187#1188#0" expanded="true" />
+            <element signature="e#1381#1382#0" expanded="true" />
+            <element signature="e#1411#1412#0" expanded="true" />
+            <element signature="e#1457#1458#0" expanded="true" />
+            <element signature="e#1492#1493#0" expanded="true" />
+            <element signature="e#1624#1625#0" expanded="true" />
+            <element signature="e#1659#1660#0" expanded="true" />
+            <element signature="e#1785#1786#0" expanded="true" />
+            <element signature="e#1822#1823#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/GraphicalUserInterface.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="239" column="20" selection-start-line="239" selection-start-column="20" selection-end-line="239" selection-end-column="20" />
+        <state relative-caret-position="281">
+          <caret line="160" column="60" selection-start-line="160" selection-start-column="53" selection-end-line="160" selection-end-column="60" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#7192#7193#0" expanded="true" />
-            <element signature="e#7213#7214#0" expanded="true" />
-            <element signature="e#7550#7551#0" expanded="true" />
-            <element signature="e#7585#7586#0" expanded="true" />
           </folding>
         </state>
       </provider>

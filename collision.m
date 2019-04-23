@@ -4,6 +4,7 @@ function flag = collision(position, velocity, system)
         
         radial_distance = sqrt( (position(1)-system(ii,1))^2 + (position(2)-system(ii,2))^2);
         
+        
         if(radial_distance <= system(ii,8))
             
             %possible collision
@@ -18,9 +19,12 @@ function flag = collision(position, velocity, system)
             
             %fprintf("Vhat = < %f , %f, %f > \n rhat = < %f , %f, %f >\n", vhat, rhat);
            
+            %check if we are close enough for a collision
             if rhat(1) < vhat(1) + 1 && rhat(1) > vhat(1) - 1 ...
                     && rhat(2) < vhat(2) + 1 && rhat(2) > vhat(2) - 1
                 
+                %if we are close enough for a collision, then check if we
+                %die
                 if speed > 100
                     flag = 1;
                 else

@@ -12,6 +12,7 @@ public class Window_Container extends JFrame {
         super("Rocket Launch");
 
 
+
         javax.swing.SwingUtilities.invokeLater(new Runnable() {
             @Override
             public void run() {
@@ -39,38 +40,6 @@ public class Window_Container extends JFrame {
         });
     }
 
-    public void haveFun()
-    {
-        int counter = 0;
-        while(counter <100)
-        {
-            counter++;
-
-            double [] newVel = game.getVelocity();
-           // newVel[0] += 2e6;
-            newVel[1] += 2e6*counter;
-            newVel[2] += 2e6;
-
-            setVelocity(newVel);
-            //frame.repaint();
-            update();
-            try {
-                Thread.sleep(100);
-            } catch(Exception e){
-
-            }
-
-            double [] newPos = game.getPosition();
-            //newPos[0] += newVel[0];
-            newPos[1] += newVel[1];
-
-            game.setPosition(newPos);
-
-
-        }
-
-    }
-
     public void kill()
     {
         this.dispose();
@@ -85,7 +54,9 @@ public class Window_Container extends JFrame {
 
     public void setPosition(double[] newPosition)
     {
+
         game.setPosition(newPosition);
+
     }
 
     public void setVelocity(double[] newVelocity)
@@ -95,20 +66,9 @@ public class Window_Container extends JFrame {
 
     public void setSystem(double[][] newSystem)
     {
-
         game.setSystem(newSystem);
-
     }
 
-    public double[] getPosition()
-    {
-        return game.getPosition();
-    }
-
-    public double[] getVelocity( )
-    {
-        return game.getVelocity();
-    }
 
 
 }
