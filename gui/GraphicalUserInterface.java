@@ -25,7 +25,7 @@ public class GraphicalUserInterface extends GUI_PANEL_SUPER
 
 	// if the ship is 25 units tall, and rockets are 70 meters tall
 
-	private final double scale =25.0/70.0;
+	private final double scale =70.0/70.0;
 
 	private Color shipColor = new Color(250,0,0);
 
@@ -47,8 +47,8 @@ public class GraphicalUserInterface extends GUI_PANEL_SUPER
 		bc.... well its easier
 		 */
         try {
-            textures = new BufferedImage[2];
-            textures[0] = ImageIO.read(new File("images/background.png"));
+            textures = new BufferedImage[3];
+            textures[0] = ImageIO.read(new File("images/background.jpg"));
             textures[1] = ImageIO.read(new File("images/earth-texture.png"));
             textures[2] = ImageIO.read(new File("images/moon_texture.png"));
 
@@ -56,16 +56,18 @@ public class GraphicalUserInterface extends GUI_PANEL_SUPER
         }catch(IOException e) {
             try {
 
-                textures = new BufferedImage[2];
-                textures[0] = ImageIO.read(new File("gui/images/background.png"))
-                textures[1] = ImageIO.read(new File("gui/images/earth.png"));
-                textures[2] = ImageIO.read(new File("gui/images/moon.png"));
+                textures = new BufferedImage[3];
+                textures[0] = ImageIO.read(new File("gui/images/background.jpg"));
+                textures[1] = ImageIO.read(new File("gui/images/earth-texture.png"));
+                textures[2] = ImageIO.read(new File("gui/images/moon_texture.png"));
 
             } catch (IOException ee) {
 
             	//Okay, screw it. can't find images
-                e.printStackTrace();
+                ee.printStackTrace();
+
                 int number_of_textures = 3;
+
                 Color [] system_colors = {Color.BLACK, Color.GREEN, Color.WHITE};
                 for(int i = 0; i < number_of_textures; i++){
 
@@ -291,7 +293,6 @@ public class GraphicalUserInterface extends GUI_PANEL_SUPER
 					Ellipse2D ellip = new Ellipse2D.Double(xDistance, yDistance, width, height);
 					g2d.fill(ellip);
 
-					System.out.println("Hello from rendering");
 
 				}catch(Exception e) {
 

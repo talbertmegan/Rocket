@@ -12,9 +12,9 @@ clc
 
 %rocket properties
 velocity = [0, 0, 0];
-position = [0, 383.4e6-1e5-1e3, 0];
+position = [0, 0, 0];
 acceleration = [0, 0, 0]; %pre-init to reduce chance of errors
-thrust = [5e2,-400,0]; %rocket thrust
+thrust = [0,0,0]; %rocket thrust
 
 
 
@@ -219,6 +219,7 @@ while(timeFromStart <= 400 && output.isVisible())
     %update the gravity system
     system = updateSystem(system, finddt(t1)); 
     %update acceleration of rocket
+    thrust = (output.getThrust()')
     acceleration = findAcceleration(position,thrust,system);
     
     %update velocity of rocket
