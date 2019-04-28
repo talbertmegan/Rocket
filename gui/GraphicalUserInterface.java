@@ -39,22 +39,39 @@ public class GraphicalUserInterface extends GUI_PANEL_SUPER
 
         super(); //not really required but a nice reminder
 
+
+		/*
+		Time to try to import all the photos!
+		Now, ideally, we would create a nomenclature for the file system
+		but instead, its hardcoded here
+		bc.... well its easier
+		 */
         try {
             textures = new BufferedImage[2];
-            textures[0] = ImageIO.read(new File("earth-texture.png"));
-            textures[1] = ImageIO.read(new File("moon_texture.png"));
+            textures[0] = ImageIO.read(new File("images/background.png"));
+            textures[1] = ImageIO.read(new File("images/earth-texture.png"));
+            textures[2] = ImageIO.read(new File("images/moon_texture.png"));
 
 
         }catch(IOException e) {
             try {
 
                 textures = new BufferedImage[2];
-                textures[0] = ImageIO.read(new File("gui/earth.png"));
-                textures[1] = ImageIO.read(new File("gui/moon.png"));
+                textures[0] = ImageIO.read(new File("gui/images/background.png"))
+                textures[1] = ImageIO.read(new File("gui/images/earth.png"));
+                textures[2] = ImageIO.read(new File("gui/images/moon.png"));
 
             } catch (IOException ee) {
+
+            	//Okay, screw it. can't find images
                 e.printStackTrace();
-                textures = null;
+                int number_of_textures = 3;
+                Color [] system_colors = {Color.BLACK, Color.GREEN, Color.WHITE};
+                for(int i = 0; i < number_of_textures; i++){
+
+					textures[i] = createBlankImage(system_colors[i], 500,500);
+
+				}
             }
 
         }
@@ -126,60 +143,79 @@ public class GraphicalUserInterface extends GUI_PANEL_SUPER
 
 	}
 
+
+	private BufferedImage createBlankImage(Color color, int width, int height)
+	{
+		BufferedImage bi = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
+		Graphics2D g2d = bi.createGraphics();
+		g2d.setColor(color);
+		g2d.fillRect(0,0,width, height);
+		g2d.dispose();//stop any memory leak!
+		return bi;
+}
+
+	private void drawShip(Graphics2D g2d)
+	{
+
+		//original orientation
+		AffineTransform old = g2d.getTransform();
+
+		//find center for rotation stuff
+		int[] panelCenter = findCenterOfPanel();
+
+		//find where to draw the ship
+		int [] shipAdjustedCoordinates = findCenterCoordinatesForAShape(this.shipWidth, this.shipHeight);
+
+		//assuming y is upwards on the screen :)
+		double thetaOfShip = Math.atan( (double) getVelocity()[0]/getVelocity()[1] );
+		if(Double.isNaN(thetaOfShip)){
+			thetaOfShip = 0;
+		}
+
+		//rotate ship based on its angle of attack
+		g2d.rotate(thetaOfShip, panelCenter[0], panelCenter[1]);//rotate about center
+
+		//set color for ship and drawbounds it
+		g2d.setColor(shipColor);
+		g2d.fillOval(shipAdjustedCoordinates[0], shipAdjustedCoordinates[1], this.shipWidth, this.shipHeight);
+
+		//reset rotation
+		g2d.setTransform(old);
+	}
 	////////// Public methods ////////////////////
 
 
 	@Override
 	public void paintComponent(Graphics g){
 
-			try {
+		/*
+		Draw background
+		 */
+		try {
+			Image bg = textures[0]; //0th element should be the background
+			bg = bg.getScaledInstance((int)getCurrentSize().getWidth(), (int)getCurrentSize().getHeight(), Image.SCALE_DEFAULT);
+			g.drawImage(bg,0,0, null);
+		}catch(Exception e){
+			setBackground(Color.BLACK);
+		}
 
-				Image bg = ImageIO.read(new File("background.jpg"));
-				bg = bg.getScaledInstance((int)getCurrentSize().getWidth(), (int)getCurrentSize().getHeight(), Image.SCALE_DEFAULT);
-				g.drawImage(bg,0,0, null);
-
-			}catch(Exception e){
-				setBackground(Color.BLACK);
-			}
-
-			//makes 2d graphics easier
-			Graphics2D g2d = (Graphics2D)g;
-
-			//original orientation
-			AffineTransform old = g2d.getTransform();
-
-			//Draw the rocket (always in the center
-			//find center for rotation stuff
-			int[] panelCenter = findCenterOfPanel();
-
-			///////DRAW SHIP
-
-			//find where to draw the ship
-			int [] shipAdjustedCoordinates = findCenterCoordinatesForAShape(this.shipWidth, this.shipHeight);
-
-			//assuming y is upwards on the screen :)
-			double thetaOfShip = Math.atan( (double) getVelocity()[0]/getVelocity()[1] );
-			if(Double.isNaN(thetaOfShip)){
-				thetaOfShip = 0;
-			}
-
-			//rotate ship based on its angle of attack
-			g2d.rotate(thetaOfShip, panelCenter[0], panelCenter[1]);//rotate about center
-
-			//set color for ship and drawbounds it
-			g2d.setColor(shipColor);
-			g2d.fillOval(shipAdjustedCoordinates[0], shipAdjustedCoordinates[1], this.shipWidth, this.shipHeight);
-
-			//reset rotation
-			g2d.setTransform(old);
-			//find coordinate bounds for the screen next
-			//used to see what needs to be render		for(int i = 0; i < this.system.length; i++)
+		//makes 2d graphics easier
+		Graphics2D g2d = (Graphics2D)g;
 
 
-			int [] bounds = findBoundsOfScreen();
+		/*
+		Draw the rocket (always in the center)
+		 */
+		drawShip(g2d);
 
-			//find minimum distance something can be while still being rendered
-			double minDistance = Math.sqrt( Math.pow(bounds[0], 2) + Math.pow(bounds[1],2) )/2; // screen diagonal / 2
+		//find coordinate bounds for the screen next
+		//used to see what needs to be render		for(int i = 0; i < this.system.length; i++)
+
+
+		int [] bounds = findBoundsOfScreen();
+
+		//find max distance something can be while still being rendered
+		double maxDistance = Math.sqrt( Math.pow(bounds[0], 2) + Math.pow(bounds[1],2) )/2; // screen diagonal / 2
 
 		g2d.setColor(Color.GREEN);
 
@@ -199,7 +235,7 @@ public class GraphicalUserInterface extends GUI_PANEL_SUPER
 			radial_distance *= this.scale;
 
 
-			if (radial_distance <= minDistance) {
+			if (radial_distance <= maxDistance) {
 
 				//then, the object is within reason, so just render it
 
@@ -242,7 +278,7 @@ public class GraphicalUserInterface extends GUI_PANEL_SUPER
 					else if(i == 1)
 							k = 500;
 
-        			TexturePaint tp = new TexturePaint( textures[i], new Rectangle((int)xDistance, (int)yDistance,width/k,height/k));
+        			TexturePaint tp = new TexturePaint( textures[i+1], new Rectangle((int)xDistance, (int)yDistance,width/k,height/k));
 
 					g2d.setPaint(tp);
 
@@ -274,6 +310,7 @@ public class GraphicalUserInterface extends GUI_PANEL_SUPER
 
     /**
      * Forces the frame to update for drawing, not really used since window_container will call repaint when it updates
+	 * Kept for any backwards compatibility issues that may arise !
      */
 	public void update()
 	{

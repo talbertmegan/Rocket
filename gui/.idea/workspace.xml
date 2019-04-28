@@ -2,39 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cc37c22d-19cd-4dab-bd4c-92fc007cfa5d" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/GUI_PANEL.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/GUI_PANEL_SUPER.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AClass.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Map.asv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Map.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../background.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../collision.m" beforeDir="false" afterPath="$PROJECT_DIR$/../collision.m" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GraphicalUserInterface.class" beforeDir="false" afterPath="$PROJECT_DIR$/GraphicalUserInterface.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GUI_PANEL.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/GraphicalUserInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/GraphicalUserInterface.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Window_Container.java" beforeDir="false" afterPath="$PROJECT_DIR$/Window_Container.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/background.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/color splash.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/earth.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/earth.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/earth_PNG7.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/moon.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/gui/.idea/encodings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/gui/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/gui/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/gui/.idea/uiDesigner.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/gui/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/gui/.idea/workspace.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/gui/GraphicalUserInterface.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/gui/Window_Container$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/gui/Window_Container.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/gui/background.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/gui/color splash.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/gui/earth.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/gui/earth.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/gui/earth_PNG7.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/gui/gui.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/gui/moon.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/gui/test_driver.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_driver.java" beforeDir="false" afterPath="$PROJECT_DIR$/test_driver.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../physics.m" beforeDir="false" afterPath="$PROJECT_DIR$/../physics.m" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Map.java" beforeDir="false" afterPath="$PROJECT_DIR$/Map.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -48,7 +22,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Window_Container.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="885">
+            <state relative-caret-position="780">
               <caret line="68" column="34" selection-start-line="68" selection-start-column="34" selection-end-line="68" selection-end-column="34" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -62,11 +36,26 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/GraphicalUserInterface.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="281">
-              <caret line="160" column="60" selection-start-line="160" selection-start-column="53" selection-end-line="160" selection-end-column="60" />
+            <state relative-caret-position="304">
+              <caret line="210" column="48" selection-start-line="210" selection-start-column="48" selection-end-line="210" selection-end-column="48" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="method#findCenterOfPanel#0;class#GraphicalUserInterface#0" />
+                <element signature="method#findCenterCoordinatesForAShape#0;class#GraphicalUserInterface#0" />
+                <element signature="method#findBoundsOfScreen#0;class#GraphicalUserInterface#0" />
+                <element signature="method#drawShip#0;class#GraphicalUserInterface#0" />
+                <element signature="e#8433#8434#0" expanded="true" />
+                <element signature="e#8454#8455#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Map.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="240">
+              <caret line="22" column="13" selection-start-line="22" selection-start-column="13" selection-end-line="22" selection-end-column="13" />
             </state>
           </provider>
         </entry>
@@ -74,24 +63,10 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/GUI_PANEL_SUPER.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="454">
+            <state relative-caret-position="690">
               <caret line="55" column="13" selection-start-line="55" selection-start-column="13" selection-end-line="55" selection-end-column="13" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#618#619#0" expanded="true" />
-                <element signature="e#649#650#0" expanded="true" />
-                <element signature="e#803#804#0" expanded="true" />
-                <element signature="e#822#823#0" expanded="true" />
-                <element signature="e#1157#1158#0" expanded="true" />
-                <element signature="e#1187#1188#0" expanded="true" />
-                <element signature="e#1381#1382#0" expanded="true" />
-                <element signature="e#1411#1412#0" expanded="true" />
-                <element signature="e#1457#1458#0" expanded="true" />
-                <element signature="e#1492#1493#0" expanded="true" />
-                <element signature="e#1624#1625#0" expanded="true" />
-                <element signature="e#1659#1660#0" expanded="true" />
-                <element signature="e#1785#1786#0" expanded="true" />
-                <element signature="e#1822#1823#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -128,13 +103,14 @@
         <option value="$PROJECT_DIR$/test_driver.java" />
         <option value="$PROJECT_DIR$/GUI_PANEL.java" />
         <option value="$PROJECT_DIR$/Window_Container.java" />
-        <option value="$PROJECT_DIR$/GraphicalUserInterface.java" />
         <option value="$PROJECT_DIR$/GUI_PANEL_SUPER.java" />
+        <option value="$PROJECT_DIR$/Map.java" />
+        <option value="$PROJECT_DIR$/GraphicalUserInterface.java" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="67" />
+    <option name="x" value="993" />
     <option name="y" value="25" />
     <option name="width" value="927" />
     <option name="height" value="1055" />
@@ -145,7 +121,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -158,6 +133,7 @@
         </subPane>
       </pane>
       <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -228,7 +204,7 @@
   <component name="ToolWindowManager">
     <frame x="67" y="25" width="1853" height="1055" extended-state="6" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" side_tool="true" visible="true" weight="0.16878805" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" side_tool="true" visible="true" weight="0.17044826" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -344,18 +320,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Window_Container.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="885">
-          <caret line="68" column="34" selection-start-line="68" selection-start-column="34" selection-end-line="68" selection-end-column="34" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1600#1601#0" expanded="true" />
-            <element signature="e#1641#1642#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/GraphicalUserInterface.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="165">
@@ -374,36 +338,50 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Window_Container.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="780">
+          <caret line="68" column="34" selection-start-line="68" selection-start-column="34" selection-end-line="68" selection-end-column="34" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1600#1601#0" expanded="true" />
+            <element signature="e#1641#1642#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/GUI_PANEL_SUPER.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="454">
+        <state relative-caret-position="690">
           <caret line="55" column="13" selection-start-line="55" selection-start-column="13" selection-end-line="55" selection-end-column="13" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#618#619#0" expanded="true" />
-            <element signature="e#649#650#0" expanded="true" />
-            <element signature="e#803#804#0" expanded="true" />
-            <element signature="e#822#823#0" expanded="true" />
-            <element signature="e#1157#1158#0" expanded="true" />
-            <element signature="e#1187#1188#0" expanded="true" />
-            <element signature="e#1381#1382#0" expanded="true" />
-            <element signature="e#1411#1412#0" expanded="true" />
-            <element signature="e#1457#1458#0" expanded="true" />
-            <element signature="e#1492#1493#0" expanded="true" />
-            <element signature="e#1624#1625#0" expanded="true" />
-            <element signature="e#1659#1660#0" expanded="true" />
-            <element signature="e#1785#1786#0" expanded="true" />
-            <element signature="e#1822#1823#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Map.asv">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Map.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="22" column="13" selection-start-line="22" selection-start-column="13" selection-end-line="22" selection-end-column="13" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/GraphicalUserInterface.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="281">
-          <caret line="160" column="60" selection-start-line="160" selection-start-column="53" selection-end-line="160" selection-end-column="60" />
+        <state relative-caret-position="304">
+          <caret line="210" column="48" selection-start-line="210" selection-start-column="48" selection-end-line="210" selection-end-column="48" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="method#findCenterOfPanel#0;class#GraphicalUserInterface#0" />
+            <element signature="method#findCenterCoordinatesForAShape#0;class#GraphicalUserInterface#0" />
+            <element signature="method#findBoundsOfScreen#0;class#GraphicalUserInterface#0" />
+            <element signature="method#drawShip#0;class#GraphicalUserInterface#0" />
+            <element signature="e#8433#8434#0" expanded="true" />
+            <element signature="e#8454#8455#0" expanded="true" />
           </folding>
         </state>
       </provider>

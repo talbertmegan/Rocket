@@ -5,7 +5,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 
-public class Map extends JFrame {
+public class Map extends GUI_PANEL_SUPER { //GUI panel super adds some setters automatically
   private double position[][];
 
     //Constructor
@@ -20,6 +20,7 @@ public class Map extends JFrame {
 
 
     //makes the drawing possible
+    @Override
     public void paintComponent(Graphics g){
       Graphics2D g2d = (Graphics2D)g;
       // g2d.setColor(Color.BLUE);
