@@ -2,8 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cc37c22d-19cd-4dab-bd4c-92fc007cfa5d" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/GUI_PANEL_SUPER.class" beforeDir="false" afterPath="$PROJECT_DIR$/GUI_PANEL_SUPER.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/GUI_PANEL_SUPER.java" beforeDir="false" afterPath="$PROJECT_DIR$/GUI_PANEL_SUPER.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GraphicalUserInterface.class" beforeDir="false" afterPath="$PROJECT_DIR$/GraphicalUserInterface.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Map.java" beforeDir="false" afterPath="$PROJECT_DIR$/Map.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Window_Container$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/Window_Container$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Window_Container.class" beforeDir="false" afterPath="$PROJECT_DIR$/Window_Container.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Window_Container.java" beforeDir="false" afterPath="$PROJECT_DIR$/Window_Container.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
