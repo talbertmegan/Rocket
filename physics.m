@@ -51,7 +51,7 @@ system = [...
 %%Lets get this GUI working :)
 javaaddpath(pwd+"/gui") %add current working directory to java dynamic class paths
 javaaddpath(pwd)
-output = Window_Container(); %create the output window
+output = Window_Container(system); %create the output window
 
 
 %setup output

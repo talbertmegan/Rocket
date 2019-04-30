@@ -15,6 +15,10 @@ public class GUI_PANEL_SUPER extends JPanel{
     private double[] velocity = new double[3]; //current velocity
 
 
+    public GUI_PANEL_SUPER()
+    {
+    }
+
     /**
      * A function called by window to automatically update the window and draw on it
      * @param g contains the graphics stuff for the window

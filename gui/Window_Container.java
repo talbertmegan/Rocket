@@ -12,9 +12,11 @@ public class Window_Container extends JFrame implements KeyListener {
 
     private final double acceleration_from_keypush = 10.0;
 
-    public Window_Container()
+    public Window_Container(double[][] currentSystem)
     {
         super("Rocket Launch");
+
+        setSystem(currentSystem);
 
         this.thrust = new double[3];
         this.thrust[0] = 0.0;

@@ -13,7 +13,7 @@ public class Map extends GUI_PANEL_SUPER { //GUI panel super adds some setters a
     public Map(){
 
     }
-
+/*
     //Sets system position
     public void setSystem(double[][] systemPosition){
       this.position = systemPosition;
@@ -48,5 +48,5 @@ public class Map extends GUI_PANEL_SUPER { //GUI panel super adds some setters a
       frame.pack();
       frame.setVisible(true);
     }
-
+*/
 }
