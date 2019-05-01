@@ -221,11 +221,11 @@ while(timeFromStart <= 400 && output.isVisible())
     %update the gravity system
     system = updateSystem(system, finddt(t1)); 
     %update acceleration of rocket
-    thrust = (output.getThrust()')
+    thrust = (output.getThrust()');
     acceleration = findAcceleration(position,thrust,system);
     
     %update velocity of rocket
-    velocity = findVelocity(acceleration, velocity, finddt(t1) );
+    velocity = findVelocity(acceleration, velocity, finddt(t1) )
     
     %% detect collisions
     collision_flag = collision(position, velocity, system);

@@ -343,9 +343,7 @@ public class GraphicalUserInterface extends GUI_PANEL_SUPER
 
         Double[] pos_scaled = { getPosition()[0]*scaler, ( getSystem()[0][7]+ getPosition()[1])*scaler};
         g2d.setColor(Color.RED);
-        System.out.println(scaler);
-        System.out.println(pos_scaled[1]);
-        g2d.fillOval( (int)(center_of_map[0]-pos_scaled[0]), (int)(center_of_map[1]-pos_scaled[1])-14, (int)(3), (int)(5) );
+        g2d.fillOval( (int)(center_of_map[0]+pos_scaled[0]), (int)(center_of_map[1]-pos_scaled[1])-14, (int)(3), (int)(5) );
 
 
 	}
