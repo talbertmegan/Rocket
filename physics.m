@@ -52,7 +52,7 @@ system = [...
 javaaddpath(pwd+"/gui") %add current working directory to java dynamic class paths
 javaaddpath(pwd)
 output = Window_Container(); %create the output window
-
+disp(output)
 
 %setup output
 
@@ -65,7 +65,6 @@ output.setSystem(system);
 startTime = clock; %used in x-axis calculation for graphing
 timeFromStart = 0; %pre-declare so while-loop doesn't mess up (do while)
 t1=clock;%pre-declare for timeFromStart declaration below
-
 
 %{
 demonstration of how this all works :)
@@ -100,8 +99,9 @@ clear output
 
 collision_flag = 0;
 
+
 %%this loop is broken on purpose for testing
-while(timeFromStart <= 400 && output.isVisible())
+while(timeFromStart <= 1000 && output.isVisible())
     % TODO this can be optimized by combining linear approximations later
     %also, graphing can be optimized
     
