@@ -10,7 +10,7 @@ public class GUI_PANEL_SUPER extends JPanel{
     /*
     Class variables
      */
-    double[][] system;
+    private double[][] system;
     private double[] position = {0,0,0}; //current rocket position
     private double[] velocity = new double[3]; //current velocity
 
@@ -76,6 +76,8 @@ public class GUI_PANEL_SUPER extends JPanel{
     Dimension getCurrentSize(){
         return this.getSize();
     }
+
+    double[][] getSystem(){return this.system;}
 
 
 }

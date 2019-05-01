@@ -25,7 +25,7 @@ thrust = [0,0,0]; %rocket thrust
 %because its far easier to test for bugs
 system = [...
         [0,-6.371e6,0],5.972e24, [0,0,0], 6.371e6;... %earth
-        [0,383.4e6,0],7.3276e22, [-1.022e3,0,0], 1e5... %moon (just made up the radius lol)
+        [0,383.4e6,0],7.3276e22, [-1.022e3,0,0], 1e6... %moon (just made up the radius lol)
     ];
 
 

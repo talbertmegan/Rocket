@@ -47,12 +47,20 @@ public class Map extends GUI_PANEL_SUPER { //GUI panel super adds some setters a
 
   @Override
   public void paintComponent(Graphics g){
-    System.out.println("WHAT?");
+    //System.out.println("WHAT?");
+
+
     Graphics2D g2d = (Graphics2D)g;
 
 
-    this.getGraphics().setColor(Color.GREEN);
-    this.getGraphics().fillRect(100,100,100,100);
+    /*
+
+    Graphics2D g2d = (Graphics2D)g;
+
+
+    g2d.setColor(Color.RED);
+    g2d.fillRect(100,100,100,100);
+
 
     setBackground(Color.BLACK);
 
@@ -64,39 +72,57 @@ public class Map extends GUI_PANEL_SUPER { //GUI panel super adds some setters a
     int max_dist_index;
 
 
-    for(int i = 0; i< this.system.length; i++ )
+    double[][] soi = getSystem();
+
+    soi[0][0] = getPosition()[0];
+    soi[0][1] = getPosition()[1];
+    soi[0][2] = getPosition()[2];
+    soi[0][7] =1000;
+
+
+    //find max distance from the earth
+    for(int i = 0; i<this.getSystem().length; i++)
     {
 
-        distance = Math.sqrt( Math.pow( this.getPosition()[0] - this.system[i][0] ,2) + Math.pow( this.getPosition()[1] - this.system[i][1] ,2) + Math.pow( this.getPosition()[2] - this.system[i][2] ,2) );
-
-        if(distance > max_dist)
-        {
-          max_dist = distance;
-          max_dist_index = i;
-
-        }
+      distance = Math.sqrt(  Math.pow(getSystem()[0][0] - soi[i][0], 2) +  Math.pow(getSystem()[0][0] - soi[i][0], 2) +  Math.pow(getSystem()[0][0] - soi[i][0], 2) );
+      if (distance >=max_dist)
+            max_dist = distance;
 
     }
+
 
     scale = bounds.getHeight()/max_dist;
 
-    for(int i = 0; i<this.system.length; i++)
+
+    //manually draw the earth
+
+    Ellipse2D ellip = new Ellipse2D.Double(findCenterOfPanel()[0]+scale*getSystem()[0][7], findCenterOfPanel()[1]+scale*getSystem()[0][7], scale*getSystem()[0][7], scale*getSystem()[0][7] );
+    g2d.fill(ellip);
+
+
+    for(int i = 0; i<soi.length; i++)
     {
+        double xDistance = scale * ( soi[i][0] - getSystem()[0][0] ),
+                yDistance = scale * ( soi[i][1] - getSystem()[0][1]),
+                radius = soi[i][7];
+
+        yDistance *=-1;
+
+        yDistance += findCenterOfPanel()[1];
 
 
-      double xDistance = scale*this.system[i][0],
-              yDistance = scale*this.system[i][1],
-              width = scale*this.system[i][7],
-              height = scale*this.system[i][7];
+      System.out.println("YDistance: " + yDistance + " XDistance: " + xDistance + " Radius: " + radius);
 
+      g2d.setColor(Color.GREEN);
 
-
-      g2d.setPaint(Color.GREEN);
-
-      Ellipse2D ellip = new Ellipse2D.Double(xDistance, yDistance, width, height);
+      ellip = new Ellipse2D.Double(xDistance, yDistance, radius, radius);
       g2d.fill(ellip);
+      //g2d.fillOval((int)xDistance, (int)yDistance, (int)width, (int)height);
 
-    }
+
+      //g2d.fillOval(0,0,1000,1000);
+
+   */
 
   }
 

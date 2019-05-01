@@ -25,7 +25,7 @@ public class GraphicalUserInterface extends GUI_PANEL_SUPER
 
 	// if the ship is 25 units tall, and rockets are 70 meters tall
 
-	private final double scale =70.0/70.0;
+	private final double scale =35.0/70.0;
 
 	private Color shipColor = new Color(250,0,0);
 
@@ -221,15 +221,15 @@ public class GraphicalUserInterface extends GUI_PANEL_SUPER
 
 		g2d.setColor(Color.GREEN);
 
-		for (int i = 0; i < this.system.length; i++) {
+		for (int i = 0; i < this.getSystem().length; i++) {
 			//see if any items are within the bounds
-			double xDistance = this.system[i][0] - getPosition()[0], // distance from the ship
-					yDistance = this.system[i][1] - getPosition()[1];
+			double xDistance = this.getSystem()[i][0] - getPosition()[0], // distance from the ship
+					yDistance = this.getSystem()[i][1] - getPosition()[1];
 
 			double radial_distance = Math.sqrt(Math.pow(xDistance, 2) + Math.pow(yDistance, 2));
 			//System.out.println("Pre-radius adjustment: " + radial_distance);
 
-			radial_distance = radial_distance - system[i][7]; // account for the radius of the object
+			radial_distance = radial_distance - getSystem()[i][7]; // account for the radius of the object
 			//System.out.println("Post-adjustment " + radial_distance);
 			//System.out.println("Where radius = " + system[i][7]);
 
@@ -245,7 +245,7 @@ public class GraphicalUserInterface extends GUI_PANEL_SUPER
 
 				xDistance *= this.scale;
 				yDistance *= this.scale;
-				double radius = this.system[i][7] * this.scale;
+				double radius = this.getSystem()[i][7] * this.scale;
 
 
 				//because values /down/ are positive, we have to flip the y-axis
@@ -305,6 +305,47 @@ public class GraphicalUserInterface extends GUI_PANEL_SUPER
 
 		}
 
+
+		//Define a rectangle in the bottom right of the screen
+        //it will take up 1/8th of the screen
+        // so it must be 1/4 height and 1/4 width
+
+        g2d.setColor(Color.WHITE);
+        g2d.fillRect(0, 3*(int)getCurrentSize().getHeight()/4 -10 , (int)getCurrentSize().getHeight()/4+10, (int)getCurrentSize().getHeight()/4+10);
+
+        g2d.setColor(Color.BLACK);
+        Rectangle map = new Rectangle(0, 3*(int)getCurrentSize().getHeight()/4 , (int)getCurrentSize().getHeight()/4, (int)getCurrentSize().getHeight()/4 );
+		g2d.fillRect(0, 3*(int)getCurrentSize().getHeight()/4 , (int)getCurrentSize().getHeight()/4, (int)getCurrentSize().getHeight()/4);
+
+		double[] center_of_map = {
+		        0+getCurrentSize().getHeight()/8,
+                7*getCurrentSize().getHeight()/8
+        };
+
+
+		g2d.setColor(Color.GREEN);
+		double radius = getSystem()[0][7];
+        double scaler = 5E-6;
+		g2d.fillOval( (int)(center_of_map[0]-(radius*scaler)+20), (int)(center_of_map[1]- (radius*scaler)+20), (int)(scaler*radius), (int)(scaler*radius) );
+
+        g2d.setColor(Color.WHITE);
+        radius = getSystem()[1][7];
+        scaler = 5E-6;
+
+        double [] d2e ={ (getSystem()[0][0]+getSystem()[1][0]),  (getSystem()[0][1]+getSystem()[1][1])};
+        double [] d2e_scaled = { 2e-7*d2e[0], d2e[1]*2e-7 };
+
+        g2d.fillOval( (int)(center_of_map[0]-(radius*scaler)-d2e_scaled[0] ), (int)(center_of_map[1]- (radius*scaler)-d2e_scaled[1]), (int)(scaler*radius), (int)(scaler*radius) );
+
+
+
+        scaler = Math.sqrt( Math.pow(d2e_scaled[0], 2) + Math.pow(d2e_scaled[1], 2) )/Math.sqrt( Math.pow(d2e[0], 2) + Math.pow(d2e[1], 2) );
+
+        Double[] pos_scaled = { getPosition()[0]*scaler, ( getSystem()[0][7]+ getPosition()[1])*scaler};
+        g2d.setColor(Color.RED);
+        System.out.println(scaler);
+        System.out.println(pos_scaled[1]);
+        g2d.fillOval( (int)(center_of_map[0]-pos_scaled[0]), (int)(center_of_map[1]-pos_scaled[1])-12, (int)(5), (int)(3) );
 
 
 	}

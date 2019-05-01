@@ -11,7 +11,7 @@ public class Window_Container extends JFrame implements KeyListener {
     private Map map = new Map();
     private double[] thrust;
 
-    private final double acceleration_from_keypush = 10.0;
+    private final double acceleration_from_keypush = 100.0;
 
     public Window_Container()
     {
@@ -34,11 +34,10 @@ public class Window_Container extends JFrame implements KeyListener {
 
 
                 //Add gui to frame
-                getContentPane().setLayout(new GridLayout(2,1));
 
                 getContentPane().add(game);
                 revalidate();
-                getContentPane().add(map);
+                //getContentPane().add(map);
 
                 //frame.getContentPane().add(new JLabel("TEST"));
 
