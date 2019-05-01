@@ -326,7 +326,7 @@ public class GraphicalUserInterface extends GUI_PANEL_SUPER
 		g2d.setColor(Color.GREEN);
 		double radius = getSystem()[0][7];
         double scaler = 5E-6;
-		g2d.fillOval( (int)(center_of_map[0]-(radius*scaler)+20), (int)(center_of_map[1]- (radius*scaler)+20), (int)(scaler*radius), (int)(scaler*radius) );
+		g2d.fillOval( (int)(center_of_map[0]-(radius*scaler)+18), (int)(center_of_map[1]- (radius*scaler)+20), (int)(scaler*radius), (int)(scaler*radius) );
 
         g2d.setColor(Color.WHITE);
         radius = getSystem()[1][7];
@@ -335,7 +335,7 @@ public class GraphicalUserInterface extends GUI_PANEL_SUPER
         double [] d2e ={ (getSystem()[0][0]+getSystem()[1][0]),  (getSystem()[0][1]+getSystem()[1][1])};
         double [] d2e_scaled = { 2e-7*d2e[0], d2e[1]*2e-7 };
 
-        g2d.fillOval( (int)(center_of_map[0]-(radius*scaler)-d2e_scaled[0] ), (int)(center_of_map[1]- (radius*scaler)-d2e_scaled[1]), (int)(scaler*radius), (int)(scaler*radius) );
+        g2d.fillOval( (int)(center_of_map[0]-(radius*scaler)-d2e_scaled[0] + 4 ), (int)(center_of_map[1]- (radius*scaler)-d2e_scaled[1] -15), (int)(scaler*radius), (int)(scaler*radius) );
 
 
 
@@ -345,7 +345,7 @@ public class GraphicalUserInterface extends GUI_PANEL_SUPER
         g2d.setColor(Color.RED);
         System.out.println(scaler);
         System.out.println(pos_scaled[1]);
-        g2d.fillOval( (int)(center_of_map[0]-pos_scaled[0]), (int)(center_of_map[1]-pos_scaled[1])-12, (int)(5), (int)(3) );
+        g2d.fillOval( (int)(center_of_map[0]-pos_scaled[0]), (int)(center_of_map[1]-pos_scaled[1])-14, (int)(3), (int)(5) );
 
 
 	}

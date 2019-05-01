@@ -11,7 +11,7 @@ public class Window_Container extends JFrame implements KeyListener {
     private Map map = new Map();
     private double[] thrust;
 
-    private final double acceleration_from_keypush = 100.0;
+    private final double acceleration_from_keypush = 1000.0;
 
     public Window_Container()
     {
