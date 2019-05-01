@@ -51,7 +51,7 @@ system = [...
 %%Lets get this GUI working :)
 javaaddpath(pwd+"/gui") %add current working directory to java dynamic class paths
 javaaddpath(pwd)
-output = Window_Container(system); %create the output window
+output = Window_Container(); %create the output window
 
 
 %setup output
@@ -97,6 +97,8 @@ pause(2);
 clear output
  %}
 
+
+collision_flag = 0;
 
 %%this loop is broken on purpose for testing
 while(timeFromStart <= 400 && output.isVisible())

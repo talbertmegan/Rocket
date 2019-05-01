@@ -8,15 +8,15 @@ public class Window_Container extends JFrame implements KeyListener {
 
     private static int init_width = 1000, init_height = 1000;
     private GraphicalUserInterface game = new GraphicalUserInterface();
+    private Map map = new Map();
     private double[] thrust;
 
     private final double acceleration_from_keypush = 10.0;
 
-    public Window_Container(double[][] currentSystem)
+    public Window_Container()
     {
         super("Rocket Launch");
 
-        setSystem(currentSystem);
 
         this.thrust = new double[3];
         this.thrust[0] = 0.0;
@@ -34,7 +34,12 @@ public class Window_Container extends JFrame implements KeyListener {
 
 
                 //Add gui to frame
+                getContentPane().setLayout(new GridLayout(2,1));
+
                 getContentPane().add(game);
+                revalidate();
+                getContentPane().add(map);
+
                 //frame.getContentPane().add(new JLabel("TEST"));
 
                 // some misc cleanup for the window
@@ -46,6 +51,7 @@ public class Window_Container extends JFrame implements KeyListener {
                 setSize(init_width,init_height);
 
                    //done!
+                revalidate();
                 setVisible(true);
 
             }
@@ -61,6 +67,15 @@ public class Window_Container extends JFrame implements KeyListener {
     {
         this.repaint();
     }
+
+    @Override
+    public void repaint()
+    {
+        setVisible(true);
+        game.repaint();
+        map.repaint();
+    }
+
 
     @Override
     public void keyPressed(KeyEvent e)
@@ -95,18 +110,18 @@ public class Window_Container extends JFrame implements KeyListener {
 
         if(key == KeyEvent.VK_LEFT){
             //left arrow key, i think
-            this.thrust[0] -= 0;
+            this.thrust[0] = 0;
 
         }else if(key == KeyEvent.VK_RIGHT){
-            this.thrust[0] += 0;
+            this.thrust[0] = 0;
 
 
         }else if(key == KeyEvent.VK_UP){
-            this.thrust[1] += 0;
+            this.thrust[1] = 0;
 
 
         }else if(key == KeyEvent.VK_DOWN){
-            this.thrust[1] -= 0;
+            this.thrust[1] = 0;
 
         }
 
@@ -118,17 +133,20 @@ public class Window_Container extends JFrame implements KeyListener {
     {
 
         game.setPosition(newPosition);
+        map.setPosition(newPosition);
 
     }
 
     public void setVelocity(double[] newVelocity)
     {
         game.setVelocity(newVelocity);
+        map.setVelocity(newVelocity);
     }
 
     public void setSystem(double[][] newSystem)
     {
         game.setSystem(newSystem);
+        map.setSystem(newSystem);
     }
 
     public double[] getThrust()

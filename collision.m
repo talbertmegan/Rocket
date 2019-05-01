@@ -42,7 +42,6 @@ function flag = collision(position, velocity, system)
             flag = 0; %no collision
         end
     end
-    flag =0;
 
 end
 

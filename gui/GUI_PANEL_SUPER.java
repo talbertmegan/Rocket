@@ -11,7 +11,7 @@ public class GUI_PANEL_SUPER extends JPanel{
     Class variables
      */
     double[][] system;
-    double[] position = new double[3]; //current rocket position
+    private double[] position = {0,0,0}; //current rocket position
     private double[] velocity = new double[3]; //current velocity
 
 

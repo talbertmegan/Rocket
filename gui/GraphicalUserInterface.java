@@ -134,10 +134,10 @@ public class GraphicalUserInterface extends GUI_PANEL_SUPER
 	{
 		int[] bounds = {
 
-				(int) ( (double)position[0] - getCurrentSize().getWidth()/2),
-				(int) ( (double)position[0] + getCurrentSize().getWidth()/2),
-				(int) ( (double)position[1] - getCurrentSize().getHeight()/2),
-				(int) ( (double)position[1] + getCurrentSize().getHeight()/2),
+				(int) ( (double)getPosition()[0] - getCurrentSize().getWidth()/2),
+				(int) ( (double)getPosition()[0] + getCurrentSize().getWidth()/2),
+				(int) ( (double)getPosition()[1] - getCurrentSize().getHeight()/2),
+				(int) ( (double)getPosition()[1] + getCurrentSize().getHeight()/2),
 		};
 
 		return bounds;
@@ -223,8 +223,8 @@ public class GraphicalUserInterface extends GUI_PANEL_SUPER
 
 		for (int i = 0; i < this.system.length; i++) {
 			//see if any items are within the bounds
-			double xDistance = this.system[i][0] - position[0], // distance from the ship
-					yDistance = this.system[i][1] - position[1];
+			double xDistance = this.system[i][0] - getPosition()[0], // distance from the ship
+					yDistance = this.system[i][1] - getPosition()[1];
 
 			double radial_distance = Math.sqrt(Math.pow(xDistance, 2) + Math.pow(yDistance, 2));
 			//System.out.println("Pre-radius adjustment: " + radial_distance);
