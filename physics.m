@@ -51,6 +51,9 @@ system = [...
 %%Lets get this GUI working :)
 javaaddpath(pwd+"/gui") %add current working directory to java dynamic class paths
 javaaddpath(pwd)
+
+addpath(pwd+"/new_gui"); %add matlab-created gui
+
 output = Window_Container(); %create the output window
 disp(output)
 
